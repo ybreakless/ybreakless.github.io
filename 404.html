@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404: FILE NOT FOUND | Retro Portfolio OS</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+      background-color: #0a0a0a;
+    }
+    .error-box {
+      border: 3px solid var(--accent-color);
+      padding: 40px;
+      max-width: 600px;
+      background: var(--card-bg);
+      box-shadow: 8px 8px 0px var(--accent-color);
+    }
+    h1 {
+      color: var(--accent-color);
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="error-box">
+    <h1>CRITICAL ERROR: 404 FILE NOT FOUND</h1>
+    <p style="font-size: 1.4rem; margin-bottom: 20px;">
+      The requested sector, file, or memory address could not be located in the system matrix.
+    </p>
+    <pre style="font-family: var(--font-mono); color: var(--warning-color); margin-bottom: 25px;">
+    [!] SYSTEM FAULT CODE: 0x404_PAGE_MISSING
+    [!] SUGGESTION: Return to home sector.
+    </pre>
+    <a href="index.html" class="retro-btn">[ RETURN TO PORTFOLIO ROOT ]</a>
+  </div>
+</body>
+</html>
