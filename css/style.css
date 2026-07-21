@@ -1042,3 +1042,19 @@ footer {
     text-decoration: underline !important;
   }
 }
+
+/* requested portfolio details */
+.social-links-bar { flex-wrap: wrap; gap: 8px; }
+.social-quote { color: var(--secondary-color); text-align:center; margin-top:18px; }
+#reload-btn { color:#ff4dff; border-color:#ff4dff; }
+.flashbang { animation: flashbang .5s ease-out; }
+@keyframes flashbang { 0%,100% { background:#0a0a0a } 15%,75% { background:#fff; filter:brightness(4) } }
+.score-glitch { position:relative; display:inline-block; color:var(--warning-color); font-size:1.5rem; font-weight:bold; }
+.score-glitch:hover { animation: glitch .22s steps(2) infinite; }
+.score-glitch:hover::after { content:attr(data-glitch); position:absolute; inset:0; color:var(--accent-magenta); background:var(--bg-color); animation: glitch .18s steps(2) infinite; }
+@keyframes glitch { 0%{transform:translate(2px,-1px)} 50%{transform:translate(-2px,1px)} 100%{transform:translate(1px,0)} }
+@media(max-width:700px){ .terminal-nav{align-items:flex-start; flex-direction:column; gap:8px}.nav-menu{gap:3px}.crt-container{padding:12px}.ascii-hero{font-size:5px!important} }
+.pushup { animation: pushup 1.2s ease-in-out; }
+@keyframes pushup { 50% { transform:translateY(35px) rotateX(35deg); } }
+.tetris-board { position:fixed; z-index:100001; inset:15% 30%; background:#050505; border:3px solid var(--secondary-color); color:var(--primary-color); padding:24px; white-space:pre; font:1rem/1.5 monospace; box-shadow:0 0 30px var(--secondary-color); }
+@media(max-width:600px){.tetris-board{inset:20% 8%;}}

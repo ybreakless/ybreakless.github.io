@@ -125,7 +125,9 @@ document.addEventListener('DOMContentLoaded', () => {
      4. HERO TYPING ANIMATION FOR TAGLINE
      -------------------------------------------------------------------------- */
   const taglineEl = document.getElementById('typing-tagline');
-  const taglineText = "Aspiring Software Engineer | Future CS Student in Germany 🇩🇪";
+  const taglineTexts = ["Building with Python & Rust", "Analyzing Data", "Clutching rounds in Valorant"];
+  let taglineRound = 0;
+  let taglineText = taglineTexts[0];
   let charIndex = 0;
 
   function typeTagline() {
@@ -140,6 +142,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Start typing after boot or slightly delayed
   setTimeout(typeTagline, 2500);
+  setInterval(() => { if (taglineEl && charIndex >= taglineText.length) { taglineRound = (taglineRound + 1) % taglineTexts.length; taglineEl.textContent = taglineTexts[taglineRound]; } }, 3500);
+  const reload = document.getElementById('reload-btn');
+  if (reload) reload.addEventListener('click', () => { document.body.classList.remove('flashbang'); void document.body.offsetWidth; document.body.classList.add('flashbang'); playTone(110, 'sawtooth', .2); });
 
   /* --------------------------------------------------------------------------
      5. INTERSECTION OBSERVER FOR SKILL / LANGUAGE BARS
@@ -254,6 +259,13 @@ document.addEventListener('DOMContentLoaded', () => {
           outputs.forEach(o => o.remove());
         }
         break;
+      case 'calisthenics':
+        document.getElementById('interactive-terminal').classList.add('pushup'); setTimeout(() => document.getElementById('interactive-terminal').classList.remove('pushup'), 1200); appendTermOutput('Push-up protocol engaged. Form: flawless.');
+        break;
+      case 'tetris':
+        appendTermOutput('TETRIS READY — KEYBINDS: [←/→] Move | [↑] Rotate | [↓] Soft Drop | [Q] Quit');
+        launchTetris();
+        break;
       case 'matrix':
         appendTermOutput("Initializing Matrix digital rain overlay...");
         triggerMatrixRain();
@@ -308,6 +320,8 @@ document.addEventListener('DOMContentLoaded', () => {
     alert("🎮 KONAMI CODE ACTIVATED! 🎮\nWelcome to secret Retro Arcade Mode, ybreakless!");
     triggerMatrixRain();
   }
+
+  function launchTetris() { const board=document.createElement('div'); board.className='tetris-board'; board.textContent='▣  TETRIS  ▣\n\n  [Q] QUIT'; document.body.appendChild(board); const close=()=>board.remove(); board.tabIndex=0; board.focus(); board.addEventListener('keydown',e=>{ if(e.key.toLowerCase()==='q') close(); else if(['ArrowLeft','ArrowRight','ArrowUp','ArrowDown'].includes(e.key)) { board.textContent += `\n${e.key}`; } }); }
 
   function triggerMatrixRain() {
     // Create a temporary full-screen matrix overlay effect
