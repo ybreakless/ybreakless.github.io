@@ -3,637 +3,341 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mohammad "Mo" HajNajafi (ybreakless) | Retro Portfolio OS</title>
-  <meta name="description" content="Personal portfolio of Mohammad 'Mo' HajNajafi (ybreakless) - Aspiring Software Engineer & Future CS Student in Germany. Retro CRT terminal aesthetic.">
-  <meta name="keywords" content="Mohammad HajNajafi, ybreakless, Software Engineer, Computer Science, Germany, Portfolio, Retro, Terminal, CRT">
-  
-  <!-- Open Graph Meta Tags -->
-  <meta property="og:title" content="Mohammad 'Mo' HajNajafi | Retro Portfolio OS">
-  <meta property="og:description" content="Aspiring Software Engineer & Future CS Student in Germany. Retro CRT terminal portfolio.">
-  <meta property="og:image" content="assets/images/profile.png">
-  <meta property="og:url" content="https://ybreakless.github.io">
-  
-  <!-- Favicon (Pixel style) -->
+  <title>Portfolio | Mo</title>
+  <meta name="description" content="Personal portfolio of Mohammad 'Mo' Haj Najafi - STEM Scholar, Developer, Tactical Esports Competitor. Retro CRT terminal aesthetic.">
   <link rel="icon" type="image/png" href="assets/images/profile.png">
-  
-  <!-- Stylesheet -->
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-  <!-- ==========================================================================
-     1. BOOT SCREEN (Loading Animation)
-     ========================================================================== -->
-  <div id="boot-screen">
-    <div class="boot-content">
-      <pre class="boot-log" id="boot-log"></pre>
-    </div>
-    <button class="skip-btn" id="skip-boot">[ SKIP BOOT SEQUENCE ]</button>
-  </div>
+  <!-- Flashbang overlay for Tactical Reload -->
+  <div id="flashbang-overlay"></div>
 
-  <!-- ==========================================================================
-     FIXED TOP NAVBAR (Terminal Menu Bar)
-     ========================================================================== -->
+  <!-- Terminal Menu Bar Navbar -->
   <nav class="terminal-nav">
     <ul class="nav-menu">
-      <li class="nav-item"><a href="#home">[FILE]</a></li>
-      <li class="nav-item"><a href="#about">[EDIT]</a></li>
-      <li class="nav-item"><a href="#skills">[VIEW]</a></li>
-      <li class="nav-item"><a href="#projects">[PROJECTS]</a></li>
-      <li class="nav-item"><a href="#education">[LOGS]</a></li>
-      <li class="nav-item"><a href="#achievements">[BADGES]</a></li>
+      <li class="nav-item"><a href="#home">[HOME]</a></li>
+      <li class="nav-item"><a href="#skills">[SKILLS]</a></li>
+      <li class="nav-item"><a href="#education">[EDUCATION]</a></li>
+      <li class="nav-item"><a href="#projects">[VENTURES]</a></li>
+      <li class="nav-item"><a href="#hobbies">[ESPORTS]</a></li>
       <li class="nav-item"><a href="#contact">[CONTACT]</a></li>
     </ul>
     <div class="nav-controls">
+      <button class="ctrl-btn" id="flashbang-trigger" title="Tactical Reload (Flashbang)">🎯 RELOAD</button>
       <button class="ctrl-btn" id="theme-toggle" title="Switch CRT Color Theme">THEME: GREEN</button>
       <button class="ctrl-btn" id="sound-toggle" title="Toggle Sound FX">AUDIO: ON</button>
-      <button class="ctrl-btn" id="reload-btn" title="Tactical flashbang">🎯 RELOAD</button>
     </div>
   </nav>
 
-  <!-- ==========================================================================
-     CRT CONTAINER WRAPPER
-     ========================================================================== -->
   <div class="crt-container">
     <main>
 
       <!-- ==========================================================================
-         2. HERO / HOME SECTION
+         1. HERO / HOME SECTION
          ========================================================================== -->
       <section id="home" class="hero-section">
         <pre class="ascii-hero">
- ██╗   ██╗██████╗ ██████╗ ███████╗ █████╗ ██╗  ██╗██╗     ███████╗███████╗
- ██║   ██║██╔══██╗██╔══██╗██╔════╝██╔══██╗██║ ██╔╝██║     ██╔════╝██╔════╝
- ██║   ██║██████╔╝██████╔╝█████╗  ███████║█████╔╝ ██║     █████╗  ███████╗
- ╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══╝  ██╔══██║██╔═██╗ ██║     ██╔══╝  ╚════██║
-  ╚████╔╝ ██████╔╝██████╔╝███████╗██║  ██║██║  ██╗███████╗███████╗███████║
-   ╚═══╝  ╚═════╝ ╚═════╝ ╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝╚══════╝╚══════╝
+__   __                  _                 _
+\ \ / /__  _ __ ___ __| |     _ __ ___  | | ___  ___ ___
+ \ V / _ \| '__/ _ \/ _` |    | '_ ` _ \ | |/ _ \/ __/ __|
+  | | (_) | | |  __/ (_| |    | | | | | || |  __/\__ \__ \
+  |_|\___/|_|  \___|\__,_|    |_| |_| |_||_|\___||___/___/
         </pre>
 
+        <h1 style="font-family: var(--font-heading); font-size: 1.3rem; color: var(--primary-color); text-shadow: var(--crt-glow); margin-bottom: 5px;">
+          MOHAMMAD "MO" HAJ NAJAFI
+        </h1>
+        <h2 style="font-family: var(--font-heading); font-size: 0.85rem; color: var(--warning-color); margin-bottom: 15px;">
+          [ STEM Scholar | Developer | Tactical Esports Competitor ]
+        </h2>
+
         <div class="profile-container">
-          <img src="assets/images/profile.png" alt="Mohammad Mo HajNajafi Profile Photo" class="profile-img">
+          <img src="assets/images/profile.png" alt="Mohammad Mo Haj Najafi Profile Photo" class="profile-img">
         </div>
 
         <div class="hero-tagline-box">
           <span id="typing-tagline"></span><span class="cursor-blink"></span>
         </div>
 
-        <p style="color: #aaa; max-width: 600px; margin: 0 auto 20px auto; font-size: 1.3rem;">
-          Welcome to my retro terminal portfolio! I am Mohammad "Mo" HajNajafi (aka <strong>ybreakless</strong>), building systems, writing clean code, and preparing for Computer Science studies in Germany 🇩🇪.
-        </p>
-
         <div class="hero-actions">
-          <a href="resume.pdf" target="_blank" class="retro-btn">[ DOWNLOAD CV.PDF ]</a>
+          <a href="resume.html" target="_blank" class="retro-btn">[ DOWNLOAD CV.PDF ]</a>
           <a href="#contact" class="retro-btn accent">[ INITIATE CONTACT ]</a>
         </div>
 
+        <!-- Social Media Pills -->
         <div class="social-links-bar">
-          <a href="https://github.com/ybreakless" target="_blank" class="social-icon-btn">GitHub</a>
-          <a href="https://www.linkedin.com/in/mohajnajafi/" target="_blank" class="social-icon-btn">LinkedIn</a>
-          <a href="https://instagram.com/ybreakless" target="_blank" class="social-icon-btn">Instagram</a>
-          <a href="https://x.com/ybreakless" target="_blank" class="social-icon-btn">X</a>
-          <a href="https://t.me/ybreakless" target="_blank" class="social-icon-btn">Telegram</a>
-          <a href="https://truthsocial.com/@ybreakless" target="_blank" class="social-icon-btn">Truth</a>
-          <a href="https://huggingface.co/ybreakless" target="_blank" class="social-icon-btn">HF</a>
-          <a href="https://leetcode.com/ybreakless" target="_blank" class="social-icon-btn">LeetCode</a>
-          <a href="mailto:ybreakless@gmail.com" class="social-icon-btn">Email</a>
+          <a href="https://github.com/ybreakless" target="_blank" class="social-pill">GitHub: @ybreakless</a>
+          <a href="https://www.linkedin.com/in/mohajnajafi/" target="_blank" class="social-pill">LinkedIn: mohajnajafi</a>
+          <a href="https://instagram.com/ybreakless" target="_blank" class="social-pill">Instagram: @ybreakless</a>
+          <a href="https://x.com/ybreakless" target="_blank" class="social-pill">X: @ybreakless</a>
+          <a href="https://t.me/ybreakless" target="_blank" class="social-pill">Telegram: @ybreakless</a>
+          <a href="https://truthsocial.com/@ybreakless" target="_blank" class="social-pill">Truth: @ybreakless</a>
+          <a href="https://huggingface.co/ybreakless" target="_blank" class="social-pill">HuggingFace: @ybreakless</a>
+          <a href="https://leetcode.com/ybreakless" target="_blank" class="social-pill">LeetCode: @ybreakless</a>
+          <a href="mailto:ybreakless@gmail.com" class="social-pill">Email: ybreakless@gmail.com</a>
         </div>
+        <p style="color: var(--warning-color); font-family: var(--font-mono); font-size: 1.15rem; margin-top: 15px; font-style: italic;">
+          try @ybreakless maybe i got account somewhere idk about :)
+        </p>
       </section>
 
-      <!-- ASCII Decorator -->
-      <div class="ascii-divider">
-        ========================================================================
-      </div>
+      <div class="ascii-divider">========================================================================</div>
 
       <!-- ==========================================================================
-         3. ABOUT ME
-         ========================================================================== -->
-      <section id="about">
-        <h2 class="section-header">./about_me.sh</h2>
-
-        <div class="about-grid">
-          <div class="terminal-card">
-            <div class="terminal-card-header">
-              <span>bio_profile.txt</span>
-              <span>[X]</span>
-            </div>
-            <p class="bio-text">
-              Hello world! I'm Mohammad "Mo" HajNajafi, a passionate software developer and tech enthusiast based in Dubai, UAE. My journey revolves around low-level understanding, algorithms, security, and full-stack development.
-            </p>
-            <p class="bio-text">
-              My ultimate ambition is to pursue a Bachelor's degree in Computer Science at a top-tier German university (such as TUM, RWTH Aachen, KIT, or TU Berlin), contributing to open-source software and solving real-world engineering challenges.
-            </p>
-
-            <div class="languages-list">
-              <h3 style="font-size: 0.75rem; color: var(--warning-color); margin-bottom: 10px;">LANGUAGES SPOKEN & PROFICIENCY</h3>
-              
-              <div class="lang-row">
-                <div class="lang-info"><span>English (Fluent / C2)</span><span>100%</span></div>
-                <div class="pixel-progress-bar"><div class="pixel-progress-fill" data-width="100%"></div></div>
-              </div>
-
-              <div class="lang-row">
-                <div class="lang-info"><span>German (B2 / Target A2-B2)</span><span>80%</span></div>
-                <div class="pixel-progress-bar"><div class="pixel-progress-fill" data-width="80%"></div></div>
-              </div>
-
-              <div class="lang-row">
-                <div class="lang-info"><span>Arabic (Native)</span><span>100%</span></div>
-                <div class="pixel-progress-bar"><div class="pixel-progress-fill" data-width="100%"></div></div>
-              </div>
-
-              <div class="lang-row">
-                <div class="lang-info"><span>Turkish (Native)</span><span>100%</span></div>
-                <div class="pixel-progress-bar"><div class="pixel-progress-fill" data-width="100%"></div></div>
-              </div>
-
-              <div class="lang-row">
-                <div class="lang-info"><span>Persian (Native)</span><span>100%</span></div>
-                <div class="pixel-progress-bar"><div class="pixel-progress-fill" data-width="100%"></div></div>
-              </div>
-
-              <div class="lang-row">
-                <div class="lang-info"><span>Learning: Chinese, Spanish, Norwegian</span><span>40%</span></div>
-                <div class="pixel-progress-bar"><div class="pixel-progress-fill" data-width="40%"></div></div>
-              </div>
-            </div>
-          </div>
-
-          <!-- RPG Stats Panel -->
-          <div>
-            <div class="terminal-card">
-              <div class="terminal-card-header">
-                <span>character_stats.cfg</span>
-                <span>[X]</span>
-              </div>
-              <pre class="rpg-stats">
-╔══════════════════════════════╗
-║ CHARACTER STATS              ║
-╠══════════════════════════════╣
-║ NAME: Mohammad "Mo" HajNajafi║
-║ ALIAS: ybreakless            ║
-║ CLASS: Software Developer    ║
-║ LEVEL: 18                    ║
-║ HP: 100/100 (MANA: 999)      ║
-║ LOCATION: Dubai, UAE         ║
-║ QUEST: Study CS in DE 🇩🇪     ║
-║ STATUS: Ready for deployment ║
-╚══════════════════════════════╝
-              </pre>
-            </div>
-
-            <div class="terminal-card" style="margin-top: 20px;">
-              <div class="terminal-card-header">
-                <span>core_philosophy.txt</span>
-                <span>[X]</span>
-              </div>
-              <p class="bio-text" style="font-size: 1.25rem;">
-                "Simplicity is prerequisite for reliability." — Edsger W. Dijkstra.<br>
-                I believe in writing robust, well-documented code with zero bloat and maximum efficiency.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ASCII Decorator -->
-      <div class="ascii-divider">
-        ========================================================================
-      </div>
-
-      <!-- ==========================================================================
-         4. SKILLS SECTION
+         2. SKILLS SECTION
          ========================================================================== -->
       <section id="skills">
         <h2 class="section-header">cat skills.txt</h2>
 
         <div class="skills-container">
-          <!-- Category 1 -->
-          <div class="skill-category-card">
-            <h3 class="skill-category-title">💻 Programming Languages</h3>
-            
-            <div class="skill-item">
-              <div class="skill-meta"><span>Python</span><span>85%</span></div>
-              <div class="skill-bar"><div class="skill-fill" data-width="85%"></div></div>
+          <div class="terminal-card">
+            <div class="terminal-card-header">
+              <span>languages.cfg</span>
+              <span>[X]</span>
             </div>
-
-            <div class="skill-item">
-              <div class="skill-meta"><span>JavaScript</span><span>80%</span></div>
-              <div class="skill-bar"><div class="skill-fill" data-width="80%"></div></div>
-            </div>
-
-            <div class="skill-item">
-              <div class="skill-meta"><span>HTML5 / CSS3</span><span>95%</span></div>
-              <div class="skill-bar"><div class="skill-fill" data-width="95%"></div></div>
-            </div>
-
-            <div class="skill-item">
-              <div class="skill-meta"><span>C++ / C</span><span>70%</span></div>
-              <div class="skill-bar"><div class="skill-fill" data-width="70%"></div></div>
-            </div>
+            <h3 class="skill-category-title">⚡ Languages</h3>
+            <div class="skill-item">Python <span>Advanced</span></div>
+            <div class="skill-item">Rust <span>Proficient</span></div>
+            <div class="skill-item">Bash / Shell <span>Experienced</span></div>
           </div>
 
-          <!-- Category 2 -->
-          <div class="skill-category-card">
-            <h3 class="skill-category-title">🌐 Web & Version Control</h3>
-            
-            <div class="skill-item">
-              <div class="skill-meta"><span>Git & GitHub</span><span>90%</span></div>
-              <div class="skill-bar"><div class="skill-fill" data-width="90%"></div></div>
+          <div class="terminal-card">
+            <div class="terminal-card-header">
+              <span>data_ai.cfg</span>
+              <span>[X]</span>
             </div>
-
-            <div class="skill-item">
-              <div class="skill-meta"><span>Responsive Design</span><span>95%</span></div>
-              <div class="skill-bar"><div class="skill-fill" data-width="95%"></div></div>
-            </div>
-
-            <div class="skill-item">
-              <div class="skill-meta"><span>DOM Manipulation</span><span>85%</span></div>
-              <div class="skill-bar"><div class="skill-fill" data-width="85%"></div></div>
-            </div>
-
-            <div class="skill-item">
-              <div class="skill-meta"><span>REST APIs</span><span>80%</span></div>
-              <div class="skill-bar"><div class="skill-fill" data-width="80%"></div></div>
-            </div>
+            <h3 class="skill-category-title">📊 Data & AI</h3>
+            <div class="skill-item">Data Analysis <span>Python Libraries</span></div>
+            <div class="skill-item">Deep Learning & ML <span>AWS Educate</span></div>
+            <div class="skill-item">Neural Networks <span>Conceptual</span></div>
           </div>
 
-          <!-- Category 3 -->
-          <div class="skill-category-card">
-            <h3 class="skill-category-title">🗄️ Databases & Tools</h3>
-            
-            <div class="skill-item">
-              <div class="skill-meta"><span>Linux / Bash CLI</span><span>85%</span></div>
-              <div class="skill-bar"><div class="skill-fill" data-width="85%"></div></div>
+          <div class="terminal-card">
+            <div class="terminal-card-header">
+              <span>tools.cfg</span>
+              <span>[X]</span>
             </div>
-
-            <div class="skill-item">
-              <div class="skill-meta"><span>SQLite / SQL</span><span>75%</span></div>
-              <div class="skill-bar"><div class="skill-fill" data-width="75%"></div></div>
-            </div>
-
-            <div class="skill-item">
-              <div class="skill-meta"><span>VS Code / Tooling</span><span>90%</span></div>
-              <div class="skill-bar"><div class="skill-fill" data-width="90%"></div></div>
-            </div>
-
-            <div class="skill-item">
-              <div class="skill-meta"><span>Networking & TCP/IP</span><span>80%</span></div>
-              <div class="skill-bar"><div class="skill-fill" data-width="80%"></div></div>
-            </div>
-          </div>
-
-          <!-- Category 4 -->
-          <div class="skill-category-card">
-            <h3 class="skill-category-title">🧠 Concepts & Security</h3>
-            
-            <div class="skill-item">
-              <div class="skill-meta"><span>Data Structures & Algos</span><span>80%</span></div>
-              <div class="skill-bar"><div class="skill-fill" data-width="80%"></div></div>
-            </div>
-
-            <div class="skill-item">
-              <div class="skill-meta"><span>Object-Oriented Programming</span><span>85%</span></div>
-              <div class="skill-bar"><div class="skill-fill" data-width="85%"></div></div>
-            </div>
-
-            <div class="skill-item">
-              <div class="skill-meta"><span>Ethical Hacking Basics</span><span>80%</span></div>
-              <div class="skill-bar"><div class="skill-fill" data-width="80%"></div></div>
-            </div>
-
-            <div class="skill-item">
-              <div class="skill-meta"><span>Google Data Analysis</span><span>85%</span></div>
-              <div class="skill-bar"><div class="skill-fill" data-width="85%"></div></div>
-            </div>
+            <h3 class="skill-category-title">🛠️ Tools & Environments</h3>
+            <div class="skill-item">Git & GitHub <span>Version Control</span></div>
+            <div class="skill-item">Windows CMD <span>PowerShell Admin</span></div>
+            <div class="skill-item">Linux Terminal <span>Advanced CLI</span></div>
           </div>
         </div>
       </section>
 
-      <!-- ASCII Decorator -->
-      <div class="ascii-divider">
-        ========================================================================
-      </div>
+      <div class="ascii-divider">========================================================================</div>
 
       <!-- ==========================================================================
-         5. PROJECTS SECTION
-         ========================================================================== -->
-      <section id="projects">
-        <h2 class="section-header">ls ./projects/</h2>
-
-        <div class="projects-grid">
-          <!-- Project 1 -->
-          <div class="project-window">
-            <div class="window-titlebar">
-              <span>Retro_Portfolio_OS.exe</span>
-              <div class="window-controls">
-                <span>_</span><span>□</span><span>X</span>
-              </div>
-            </div>
-            <div class="window-body">
-              <img src="assets/images/project1.png" alt="Retro Portfolio OS Screenshot" class="project-img-placeholder">
-              <h3 class="project-title">Retro Portfolio OS</h3>
-              <p class="project-desc">
-                A fully responsive personal portfolio website built with a retro CRT terminal aesthetic, featuring boot screen, custom sound effects, and interactive DOS command-line widget.
-              </p>
-              <div class="tech-badges">
-                <span class="pixel-badge">HTML5</span>
-                <span class="pixel-badge">CSS3</span>
-                <span class="pixel-badge">Vanilla JS</span>
-                <span class="pixel-badge">Web Audio API</span>
-              </div>
-              <div class="project-actions">
-                <a href="https://github.com/ybreakless/ybreakless.github.io" target="_blank" class="retro-btn">[ VIEW CODE ]</a>
-                <a href="#home" class="retro-btn accent">[ LIVE DEMO ]</a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Project 2 -->
-          <div class="project-window">
-            <div class="window-titlebar">
-              <span>Terminal_Hacker_Tool.py</span>
-              <div class="window-controls">
-                <span>_</span><span>□</span><span>X</span>
-              </div>
-            </div>
-            <div class="window-body">
-              <img src="assets/images/project2.png" alt="Terminal Hacker Tool Screenshot" class="project-img-placeholder">
-              <h3 class="project-title">Terminal Network Toolkit</h3>
-              <p class="project-desc">
-                A command-line network reconnaissance and security utility developed in Python as part of my ethical hacking and networking studies.
-              </p>
-              <div class="tech-badges">
-                <span class="pixel-badge">Python</span>
-                <span class="pixel-badge">Sockets</span>
-                <span class="pixel-badge">Networking</span>
-                <span class="pixel-badge">Bash</span>
-              </div>
-              <div class="project-actions">
-                <a href="https://github.com/ybreakless" target="_blank" class="retro-btn">[ VIEW CODE ]</a>
-                <a href="https://github.com/ybreakless" target="_blank" class="retro-btn accent">[ GITHUB ]</a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Project 3 -->
-          <div class="project-window">
-            <div class="window-titlebar">
-              <span>Data_Analysis_Dashboard.js</span>
-              <div class="window-controls">
-                <span>_</span><span>□</span><span>X</span>
-              </div>
-            </div>
-            <div class="window-body">
-              <img src="assets/images/project3.png" alt="Data Analysis Dashboard Screenshot" class="project-img-placeholder">
-              <h3 class="project-title">Metrics & Data Dashboard</h3>
-              <p class="project-desc">
-                An interactive data visualization dashboard processing GitHub commit stats and language acquisition metrics inspired by Google Data Analysis certification.
-              </p>
-              <div class="tech-badges">
-                <span class="pixel-badge">JavaScript</span>
-                <span class="pixel-badge">Chart.js</span>
-                <span class="pixel-badge">REST API</span>
-                <span class="pixel-badge">SQL</span>
-              </div>
-              <div class="project-actions">
-                <a href="https://github.com/ybreakless" target="_blank" class="retro-btn">[ VIEW CODE ]</a>
-                <a href="https://github.com/ybreakless" target="_blank" class="retro-btn accent">[ GITHUB ]</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ASCII Decorator -->
-      <div class="ascii-divider">
-        ========================================================================
-      </div>
-
-      <!-- ==========================================================================
-         6. EDUCATION SECTION
+         3. EDUCATION & CERTIFICATIONS
          ========================================================================== -->
       <section id="education">
         <h2 class="section-header">cat education.log</h2>
 
-        <div class="education-timeline">
-          <div class="timeline-item">
-            <div class="timeline-year">[ 2026 ]</div>
-            <h3 class="timeline-title">High School Diploma & Advanced STEM Track</h3>
-            <p class="timeline-desc">
-              Completed rigorous coursework in Mathematics, Physics, and Computer Science with top honors. Built strong foundations in algorithms, programming, and system architecture.
-            </p>
+        <div class="terminal-card" style="max-width: 900px; margin: 0 auto;">
+          <div class="terminal-card-header">
+            <span>academic_record.log</span>
+            <span>[X]</span>
           </div>
-
-          <div class="timeline-item">
-            <div class="timeline-year">[ 2026 - PRESENT ]</div>
-            <h3 class="timeline-title">Preparation for German University CS Bachelor</h3>
-            <p class="timeline-desc">
-              Intensive German language study (B2 proficiency) and self-taught advanced computer science (Data Structures, Python, Git, Networking) targeting premier German institutions.
-            </p>
-          </div>
-        </div>
-
-        <div class="germany-target-box">
-          <h3>🇩🇪 TARGET GERMAN UNIVERSITIES FOR COMPUTER SCIENCE 🇩🇪</h3>
-          <p style="font-size: 1.25rem; color: #ccc;">
-            Technical University of Munich (TUM) • RWTH Aachen University • Karlsruhe Institute of Technology (KIT) • TU Berlin
+          <p style="font-size: 1.35rem; margin-bottom: 15px;">
+            <strong>High School:</strong> Experimental Sciences Diploma &mdash; Graduated with Highest Honors (<span class="glitch-text">20/20 Average</span>).
+          </p>
+          <p style="font-size: 1.35rem; margin-bottom: 15px;">
+            <strong>Standardized Testing & Languages:</strong> SAT Completed | IELTS Band 9 (C1-C2 English) | German (B2) | Persian (Native).
+          </p>
+          <p style="font-size: 1.35rem; margin-bottom: 10px;">
+            <strong>Completed Coursework:</strong> Git & GitHub (Coursera), Python Development (Maktabkhooneh), Data Analysis with Python, CodeDex, and Exercism.
           </p>
         </div>
       </section>
 
-      <!-- ASCII Decorator -->
-      <div class="ascii-divider">
-        ========================================================================
-      </div>
+      <div class="ascii-divider">========================================================================</div>
 
       <!-- ==========================================================================
-         7. CERTIFICATIONS & ACHIEVEMENTS
+         4. PROJECTS & FUTURE VENTURES
          ========================================================================== -->
-      <section id="achievements">
-        <h2 class="section-header">achievements --list</h2>
+      <section id="projects">
+        <h2 class="section-header">ls ./ventures/</h2>
 
-        <div class="achievements-grid">
-          <!-- Cert 1 -->
-          <div class="achievement-badge-card">
-            <div class="badge-icon">📜</div>
-            <div class="badge-info">
-              <h4>Comprehensive Git and GitHub</h4>
-              <p>Maktabkhooneh <span class="badge-issuer">(2026)</span></p>
+        <div class="projects-grid">
+          <!-- Venture 1: Bio Twin -->
+          <div class="project-window">
+            <div class="window-titlebar">
+              <span>Bio_Twin.exe</span>
+              <div class="window-controls"><span>_</span><span>□</span><span>X</span></div>
+            </div>
+            <div class="window-body">
+              <img src="assets/images/project1.png" alt="Bio Twin Health Tech" class="project-img-placeholder">
+              <h3 style="font-family: var(--font-heading); font-size: 0.8rem; color: var(--warning-color); margin-bottom: 10px;">Bio Twin (Health Tech)</h3>
+              <p style="font-size: 1.25rem; margin-bottom: 15px; color: #ccc;">
+                A futuristic health tech concept enabling humans to monitor their body and vital parameters using just the palm of their hands. Bridges the gap between infrequent clinic visits (every 3 months) via next-gen biometric devices.
+              </p>
+              <div>
+                <span class="pixel-badge">HealthTech</span>
+                <span class="pixel-badge">Biometrics</span>
+                <span class="pixel-badge">AI/IoT</span>
+              </div>
             </div>
           </div>
 
-          <!-- Cert 2 -->
-          <div class="achievement-badge-card">
-            <div class="badge-icon">🏆</div>
-            <div class="badge-info">
-              <h4>Git and GitHub Fundamentals</h4>
-              <p>365 Data Science <span class="badge-issuer">(Nov 2024)</span></p>
+          <!-- Venture 2: Moython -->
+          <div class="project-window">
+            <div class="window-titlebar">
+              <span>Moython.brand</span>
+              <div class="window-controls"><span>_</span><span>□</span><span>X</span></div>
+            </div>
+            <div class="window-body">
+              <img src="assets/images/project2.png" alt="Moython Brand" class="project-img-placeholder">
+              <h3 style="font-family: var(--font-heading); font-size: 0.8rem; color: var(--warning-color); margin-bottom: 10px;">Moython</h3>
+              <p style="font-size: 1.25rem; margin-bottom: 15px; color: #ccc;">
+                My technology education brand and content channel dedicated to making Python and computer science accessible and engaging for ambitious learners worldwide.
+              </p>
+              <div>
+                <span class="pixel-badge">Ed-Tech</span>
+                <span class="pixel-badge">Python</span>
+                <span class="pixel-badge">Community</span>
+              </div>
             </div>
           </div>
 
-          <!-- Cert 3 -->
-          <div class="achievement-badge-card">
-            <div class="badge-icon">🛡️</div>
-            <div class="badge-info">
-              <h4>Ethical Hacking Essentials</h4>
-              <p>Maktabkhooneh <span class="badge-issuer">(2025)</span></p>
+          <!-- Venture 3: Y314 & Homa -->
+          <div class="project-window">
+            <div class="window-titlebar">
+              <span>Y314_Homa.concept</span>
+              <div class="window-controls"><span>_</span><span>□</span><span>X</span></div>
             </div>
-          </div>
-
-          <!-- Cert 4 -->
-          <div class="achievement-badge-card">
-            <div class="badge-icon">🌐</div>
-            <div class="badge-info">
-              <h4>Computer Networking Fundamentals</h4>
-              <p>Maktabkhooneh <span class="badge-issuer">(2025)</span></p>
-            </div>
-          </div>
-
-          <!-- Cert 5 -->
-          <div class="achievement-badge-card">
-            <div class="badge-icon">📊</div>
-            <div class="badge-info">
-              <h4>Google Data Analytics Professional</h4>
-              <p>Google / Coursera <span class="badge-issuer">(2026)</span></p>
-            </div>
-          </div>
-
-          <!-- Cert 6 -->
-          <div class="achievement-badge-card">
-            <div class="badge-icon">🐍</div>
-            <div class="badge-info">
-              <h4>All of Python Programming Language</h4>
-              <p>Maktabkhooneh <span class="badge-issuer">(2024)</span></p>
-            </div>
-          </div>
-
-          <!-- Cert 7 -->
-          <div class="achievement-badge-card">
-            <div class="badge-icon">🗣️</div>
-            <div class="badge-info">
-              <h4>Busuu Language Learning Certified</h4>
-              <p>Busuu <span class="badge-issuer">(2025)</span></p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Language Scores & Certificates section -->
-        <div class="language-scores-section">
-          <h3 style="font-family: var(--font-heading); font-size: 0.8rem; color: var(--secondary-color); margin-bottom: 10px;">
-            🗣️ LINGUISTIC PROFICIENCY SCORES & VERIFICATIONS
-          </h3>
-          <p class="score-glitch" data-glitch="Flawless Victory!">20/20 Average</p>
-          <p style="font-size: 1.25rem; color: #ccc; margin-bottom: 15px;">
-            Certified multilingual capabilities supporting international academic and software engineering environments.
-          </p>
-
-          <div class="language-scores-grid">
-            <div class="lang-score-card">
-              <h5>ENGLISH</h5>
-              <div class="lang-score-val">C2 / Score: 130</div>
-            </div>
-            <div class="lang-score-card">
-              <h5>GERMAN</h5>
-              <div class="lang-score-val">B2 / Score: 80</div>
-            </div>
-            <div class="lang-score-card">
-              <h5>ARABIC</h5>
-              <div class="lang-score-val">Native / 25</div>
-            </div>
-            <div class="lang-score-card">
-              <h5>TURKISH</h5>
-              <div class="lang-score-val">Native / 25</div>
-            </div>
-            <div class="lang-score-card">
-              <h5>PERSIAN</h5>
-              <div class="lang-score-val">Native</div>
+            <div class="window-body">
+              <img src="assets/images/project3.png" alt="Y314 & Homa Concepts" class="project-img-placeholder">
+              <h3 style="font-family: var(--font-heading); font-size: 0.8rem; color: var(--warning-color); margin-bottom: 10px;">Y314 & Homa (Concepts)</h3>
+              <p style="font-size: 1.25rem; margin-bottom: 15px; color: #ccc;">
+                <strong>Y314:</strong> 24/7 health-monitoring software and sleep-learning technology.<br>
+                <strong>Homa:</strong> Localized AI data centers and secure cloud infrastructure.
+              </p>
+              <div>
+                <span class="pixel-badge">AI Infra</span>
+                <span class="pixel-badge">Sleep Tech</span>
+                <span class="pixel-badge">Cloud</span>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- ASCII Decorator -->
-      <div class="ascii-divider">
-        ========================================================================
-      </div>
+      <div class="ascii-divider">========================================================================</div>
 
       <!-- ==========================================================================
-         8. CONTACT SECTION
+         5. BEYOND THE CODE (HOBBIES & ATHLETICS)
+         ========================================================================== -->
+      <section id="hobbies">
+        <h2 class="section-header">cat beyond_code.log</h2>
+
+        <div class="skills-container">
+          <div class="terminal-card">
+            <div class="terminal-card-header">
+              <span>athletics.cfg</span>
+              <span>[X]</span>
+            </div>
+            <h3 class="skill-category-title">🏋️‍♂️ Athletics</h3>
+            <p style="font-size: 1.25rem; color: #ccc;">
+              Competitive Calisthenics practitioner building exceptional relative strength and discipline. Active professional-level Volleyball and Football player.
+            </p>
+          </div>
+
+          <div class="terminal-card">
+            <div class="terminal-card-header">
+              <span>esports.cfg</span>
+              <span>[X]</span>
+            </div>
+            <h3 class="skill-category-title">🎮 Tactical Esports</h3>
+            <p style="font-size: 1.25rem; color: #ccc;">
+              Top-rank competitive player in tactical shooters like <strong>Valorant</strong> and <strong>Rainbow Six Siege</strong>, mastering high-pressure clutch plays and strategic team leadership.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <div class="ascii-divider">========================================================================</div>
+
+      <!-- ==========================================================================
+         6. CONTACT SECTION & SOCIALS DIRECTORY
          ========================================================================== -->
       <section id="contact">
         <h2 class="section-header">./contact.sh</h2>
 
         <div class="contact-terminal">
-          <div class="terminal-prompt-line">
+          <div style="font-family: var(--font-mono); color: var(--secondary-color); margin-bottom: 15px;">
             guest@portfolio:~$ send_message --secure
           </div>
 
-          <!-- Formspree / mailto action form -->
           <form id="contact-form" action="https://formsubmit.co/ybreakless@gmail.com" method="POST" class="terminal-form">
-            <div class="form-group">
-              <label for="name">Enter Name:</label>
-              <input type="text" id="name" name="name" required placeholder="Your Name or Company">
-            </div>
+            <input type="hidden" name="_subject" value="New message from Retro Portfolio OS!">
+            <input type="hidden" name="_template" value="table">
 
-            <div class="form-group">
-              <label for="email">Enter Email:</label>
-              <input type="email" id="email" name="email" required placeholder="your.email@domain.com">
-            </div>
+            <label style="display: block; font-family: var(--font-mono); color: var(--warning-color); margin-bottom: 5px;">Enter Name:</label>
+            <input type="text" name="name" required placeholder="Your Name or Company">
 
-            <div class="form-group">
-              <label for="message">Enter Message:</label>
-              <textarea id="message" name="message" required placeholder="Type your message, project inquiry, or university admission query here..."></textarea>
-            </div>
+            <label style="display: block; font-family: var(--font-mono); color: var(--warning-color); margin-bottom: 5px;">Enter Email:</label>
+            <input type="email" name="email" required placeholder="your.email@domain.com">
 
-            <div class="form-actions">
-              <button type="submit" class="retro-btn">[ SEND_MESSAGE ]</button>
-              <button type="reset" class="retro-btn accent">[ CLEAR_FORM ]</button>
-            </div>
+            <label style="display: block; font-family: var(--font-mono); color: var(--warning-color); margin-bottom: 5px;">Enter Message:</label>
+            <textarea name="message" rows="4" required placeholder="Type your message or inquiry..."></textarea>
+
+            <button type="submit" class="retro-btn">[ SEND_MESSAGE ]</button>
           </form>
         </div>
-          <p class="social-quote">try @ybreakless maybe i got account somewhere idk about :)</p>
+
+        <!-- Social Networks Terminal Card -->
+        <div class="terminal-card" style="max-width: 800px; margin: 30px auto 0 auto;">
+          <div class="terminal-card-header">
+            <span>socials --list</span>
+            <span>[X]</span>
+          </div>
+          <div style="font-family: var(--font-mono); font-size: 1.15rem; line-height: 1.8;">
+            <p style="color: var(--secondary-color); margin-bottom: 10px;">// CONNECT ACROSS THE MATRIX:</p>
+            <ul style="list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px;">
+              <li><strong style="color: var(--warning-color);">instagram:</strong> <a href="https://instagram.com/ybreakless" target="_blank" style="color: var(--primary-color);">@ybreakless</a></li>
+              <li><strong style="color: var(--warning-color);">x (twitter):</strong> <a href="https://x.com/ybreakless" target="_blank" style="color: var(--primary-color);">@ybreakless</a></li>
+              <li><strong style="color: var(--warning-color);">telegram:</strong> <a href="https://t.me/ybreakless" target="_blank" style="color: var(--primary-color);">@ybreakless</a></li>
+              <li><strong style="color: var(--warning-color);">linkedin:</strong> <a href="https://www.linkedin.com/in/mohajnajafi/" target="_blank" style="color: var(--primary-color);">mohajnajafi</a></li>
+              <li><strong style="color: var(--warning-color);">truth social:</strong> <a href="https://truthsocial.com/@ybreakless" target="_blank" style="color: var(--primary-color);">@ybreakless</a></li>
+              <li><strong style="color: var(--warning-color);">huggingface:</strong> <a href="https://huggingface.co/ybreakless" target="_blank" style="color: var(--primary-color);">@ybreakless</a></li>
+              <li><strong style="color: var(--warning-color);">leetcode:</strong> <a href="https://leetcode.com/ybreakless" target="_blank" style="color: var(--primary-color);">@ybreakless</a></li>
+              <li><strong style="color: var(--warning-color);">github:</strong> <a href="https://github.com/ybreakless" target="_blank" style="color: var(--primary-color);">@ybreakless</a></li>
+            </ul>
+            <p style="color: var(--warning-color); margin-top: 20px; font-style: italic; text-align: center;">
+              try @ybreakless maybe i got account somewhere idk about :)
+            </p>
+          </div>
+        </div>
       </section>
 
     </main>
 
-    <!-- ==========================================================================
-       9. FOOTER
-       ========================================================================== -->
     <footer>
-      <div class="footer-content">
-        <div class="ascii-divider" style="margin: 0 0 20px 0;">
-          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-        </div>
-        <p style="font-size: 1.25rem; color: var(--primary-color);">
-          © 2026 Mohammad "Mo" HajNajafi (ybreakless) | Made with ♥ and lots of ☕
-        </p>
-        <p class="footer-joke">
-          "Best viewed on a 15-inch CRT monitor at 1024x768 resolution"
-        </p>
-        <div class="visitor-counter">
-          VISITOR COUNT: <span id="visitor-count">013370</span>
-        </div>
-        <div>
-          <a href="#home" class="retro-btn back-to-top">[ ↑ SCROLL TO TOP ]</a>
-        </div>
+      <div class="ascii-divider" style="margin: 0 0 20px 0;">~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</div>
+      <p style="font-size: 1.25rem; color: var(--primary-color);">
+        © 2026 Mohammad "Mo" Haj Najafi (ybreakless) | STEM Scholar & Developer
+      </p>
+      <div class="visitor-counter" style="font-family: var(--font-mono); background: #111; border: 1px dashed var(--secondary-color); display: inline-block; padding: 6px 15px; color: var(--secondary-color); margin: 15px 0;">
+        VISITOR COUNT: <span id="visitor-count">013370</span>
+      </div>
+      <div>
+        <button class="terminal-trigger" id="open-terminal" style="background: transparent; color: var(--secondary-color); border: 2px solid var(--secondary-color); padding: 8px 16px; font-family: var(--font-heading); font-size: 0.65rem; cursor: pointer;">[ >_ TERMINAL ]</button>
       </div>
     </footer>
 
   </div><!-- /crt-container -->
 
-  <!-- ==========================================================================
-     INTERACTIVE EMBEDDED TERMINAL WIDGET
-     ========================================================================== -->
+  <!-- Interactive Terminal Widget -->
   <button class="terminal-toggle-float" id="terminal-toggle-btn">[ >_ TERMINAL ]</button>
 
   <div class="interactive-terminal-widget" id="interactive-terminal">
     <div class="term-widget-header" id="term-header">
-      <span>ybreakless@portfolio-os:~</span>
+      <span>ybreakless@terminal-os:~</span>
       <span id="term-close">[_] [X]</span>
     </div>
     <div class="term-body" id="term-body">
-      <div class="term-output">Portfolio DOS v2.6. Type 'help' for commands.</div>
+      <div class="term-output">Terminal OS v4.0. Type 'help' for commands (try 'tetris' or 'calisthenics').</div>
       <div class="term-input-line">
         <span>guest@portfolio:~$</span>
         <input type="text" id="term-input" autofocus autocomplete="off">
