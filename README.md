@@ -1,57 +1,88 @@
-# 🕹️ Retro Portfolio OS - Mohammad "Mo" HajNajafi (ybreakless)
+# ybreakless.github.io
 
-A fully responsive, single-page personal portfolio website built with a **retro/vintage computing aesthetic** (inspired by old CRT monitors, DOS terminals, early GeoCities, pixel art, and arcade games). Hosted on **GitHub Pages** as a static site (HTML5 + CSS3 + Vanilla JavaScript only — NO frameworks, NO build tools, NO npm).
+Personal portfolio and CV for **Mohammad Haj Najafi** — Experimental Sciences graduate applying to
+computer science programmes at German technical universities.
 
----
+**Live:** https://ybreakless.github.io
 
-## 👤 Personal Info
-- **Name:** Mohammad "Mo" HajNajafi
-- **Alias / GitHub Username:** `ybreakless`
-- **Tagline:** Aspiring Software Engineer | Future CS Student in Germany 🇩🇪
-- **Location:** Dubai, UAE
-- **Email:** `ybreakless@gmail.com`
-- **GitHub:** [https://github.com/ybreakless](https://github.com/ybreakless)
+Static site. No framework, no build step, no dependencies. HTML5, CSS custom properties and
+~150 lines of vanilla JavaScript, all of it progressive enhancement — disable JS and the page
+still reads, navigates and submits.
 
 ---
 
-## 🎨 Design & Features
-1. **CRT Terminal Aesthetic:** Dark mode background with scanline overlays, phosphor text glow, and subtle screen flicker keyframes.
-2. **Boot Screen:** Fake terminal boot sequence (`SYSTEM BOOTING...`, memory check, loading modules) on initial load with a [SKIP] button.
-3. **Interactive Terminal Widget:** embedded DOS terminal widget where visitors can type commands (`help`, `about`, `skills`, `projects`, `contact`, `clear`, `matrix`, `sudo hire`, `easteregg`).
-4. **Retro Sound Effects (Web Audio API):** Zero external audio assets needed; procedural retro beeps and clicks on buttons and typing.
-5. **Color Themes:** Switch between Classic Green, Amber, and Cyan CRT phosphor modes.
-6. **Easter Eggs:** Konami code (`↑↑↓↓←→←→BA`) unlocks matrix digital rain and arcade celebration.
-7. **Responsive & Print-Friendly:** Optimized for mobile phones, tablets, and desktop displays with print-friendly layout.
+## Structure
 
----
-
-## 📁 File Structure
 ```
-ybreakless.github.io/
-├── index.html          # Main single-page portfolio
-├── resume.html         # Printable CV / Resume page
-├── 404.html            # Retro 404 error page
+.
+├── index.html          Portfolio — hero, academics, skills, work, contact
+├── resume.html         Print-first CV (A4, renders straight to PDF)
+├── 404.html            Not-found page
+├── sitemap.xml         Search engine sitemap
+├── robots.txt          Crawler directives
+├── AUDIT.md            Full design + content audit and outstanding TODOs
 ├── css/
-│   └── style.css       # All CRT and retro styles
+│   └── style.css       Token-based design system (dark + light)
 ├── js/
-│   └── main.js         # Interactive terminal, audio, boot sequence, animations
-├── assets/
-│   └── images/
-│       ├── profile.png # Pixel art avatar
-│       ├── project1.png# Project 1 screenshot
-│       ├── project2.png# Project 2 screenshot
-│       └── project3.png# Project 3 screenshot
-└── README.md           # Repository documentation
+│   └── main.js         Theme, nav, scroll-spy, reveal, form state
+└── assets/images/      WebP with JPEG fallbacks, OG card, favicon
 ```
+
+## Design system
+
+| | |
+|---|---|
+| Type | Inter (structure) · JetBrains Mono (labels, metadata) |
+| Scale | Fluid major third (1.250) via `clamp()`, 7 steps |
+| Space | 8pt base |
+| Colour | Near-black `#0b0c0e`, single periwinkle accent, full light theme |
+| Contrast | All pairs verified at WCAG 2.1 AA or better |
+| Motion | 160–700ms, `cubic-bezier(0.22, 1, 0.36, 1)`, `prefers-reduced-motion` honoured |
+
+Theme is set from `prefers-color-scheme` before first paint and persisted to `localStorage`.
+
+## Performance
+
+| | |
+|---|---|
+| Image payload | ~380 KB (was 8.4 MB) |
+| JavaScript | ~150 lines, no dependencies |
+| Repository | 1.3 MB (was 9.4 MB) |
+| Requests | 1 stylesheet, 1 script, 1 font request |
+
+Responsive `<picture>` with WebP + JPEG fallback, explicit dimensions to prevent layout shift,
+`fetchpriority="high"` on the portrait, lazy loading below the fold.
+
+## Accessibility
+
+Skip link · semantic landmarks · every input bound to a `<label>` · `aria-expanded` on the menu
+toggle · `aria-current` on the active nav link · Escape-to-close with focus return · decorative
+SVGs `aria-hidden` · visible focus rings · no flashing content (WCAG 2.3.1).
+
+## SEO
+
+Per-page `<title>` and description · `rel="canonical"` · Open Graph + Twitter card with a
+1200×630 preview · JSON-LD `Person` schema with `sameAs` · sitemap · robots.
+
+## Local development
+
+No tooling required. Open `index.html` directly, or serve it:
+
+```bash
+python3 -m http.server 8000
+```
+
+## Deployment
+
+GitHub Pages, `main` branch, `/` root. Repository must be named `<username>.github.io`.
 
 ---
 
-## 🚀 GitHub Pages Setup Instructions
+## Outstanding
 
-1. **Repository Name:** Ensure your repository is named `ybreakless.github.io` (or your exact GitHub username followed by `.github.io`).
-2. **Deploy Source:** 
-   - Go to your GitHub repository **Settings** > **Pages**.
-   - Under **Build and deployment**, select **Source** as `Deploy from a branch`.
-   - Select branch `main` (or `master` / working branch) and folder `/ (root)`.
-3. **Live URL:** Once deployed, your portfolio will be accessible at:
-   `https://ybreakless.github.io`
+See [`AUDIT.md`](AUDIT.md) for the full audit. Open items:
+
+- [ ] Replace the placeholder performance metric in the Terminal Network Toolkit card (`TODO(Mo)`)
+- [ ] Add verification URLs to all certifications
+- [ ] Replace `project1.jpg` / `project2.jpg` with real screenshots
+- [ ] Confirm the IELTS band and update both pages

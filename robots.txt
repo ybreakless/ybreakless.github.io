@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /assets/images/orig/
+
+Sitemap: https://ybreakless.github.io/sitemap.xml

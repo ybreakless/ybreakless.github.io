@@ -1,354 +1,691 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfolio | Mo</title>
-  <meta name="description" content="Personal portfolio of Mohammad 'Mo' Haj Najafi - STEM Scholar, Developer, Tactical Esports Competitor. Retro CRT terminal aesthetic.">
-  <link rel="icon" type="image/png" href="assets/images/profile.png">
-  <link rel="stylesheet" href="css/style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- ==========================================================================
+     SEO — every claim below should stay in sync with resume.html
+     ========================================================================== -->
+<title>Mohammad Haj Najafi — Computer Science Applicant &amp; Systems Developer</title>
+<meta name="description" content="Mohammad 'Mo' Haj Najafi — Experimental Sciences graduate (20.0/20.0) applying to computer science programmes at German technical universities. Python, Rust and Linux systems work. Based in Dubai, UAE.">
+<meta name="author" content="Mohammad Haj Najafi">
+<link rel="canonical" href="https://ybreakless.github.io/">
+<meta name="robots" content="index, follow, max-image-preview:large">
+
+<!-- Open Graph / social preview -->
+<meta property="og:type" content="profile">
+<meta property="og:url" content="https://ybreakless.github.io/">
+<meta property="og:title" content="Mohammad Haj Najafi — Computer Science Applicant &amp; Systems Developer">
+<meta property="og:description" content="Experimental Sciences graduate (20.0/20.0) applying to computer science programmes at German technical universities. Python, Rust, Linux.">
+<meta property="og:image" content="https://ybreakless.github.io/assets/images/og-card.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Mohammad Haj Najafi — Computer Science Applicant">
+<meta name="twitter:description" content="Experimental Sciences graduate (20.0/20.0) applying to CS programmes at German technical universities.">
+<meta name="twitter:image" content="https://ybreakless.github.io/assets/images/og-card.jpg">
+
+<meta name="theme-color" content="#0b0c0e" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#fbfbfc" media="(prefers-color-scheme: light)">
+
+<link rel="icon" type="image/png" href="assets/images/favicon.png">
+<link rel="apple-touch-icon" href="assets/images/favicon.png">
+
+<!-- Fonts: preconnect + single request, display=swap to avoid FOIT -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="css/style.css">
+
+<!-- Set theme before first paint so there is no flash of the wrong theme -->
+<script>
+  (function () {
+    try {
+      var stored = localStorage.getItem('theme');
+      var prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+      document.documentElement.setAttribute('data-theme', stored || (prefersLight ? 'light' : 'dark'));
+    } catch (e) { /* private mode — fall back to the dark default */ }
+  })();
+</script>
+
+<!-- Structured data: helps search engines and any recruiter tooling parse this -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Mohammad Haj Najafi",
+  "alternateName": "Mo Haj Najafi",
+  "url": "https://ybreakless.github.io/",
+  "image": "https://ybreakless.github.io/assets/images/profile.jpg",
+  "email": "mailto:ybreakless@gmail.com",
+  "jobTitle": "Computer Science Applicant & Systems Developer",
+  "description": "Experimental Sciences graduate applying to computer science programmes at German technical universities. Works in Python, Rust and Linux systems tooling.",
+  "address": { "@type": "PostalAddress", "addressLocality": "Dubai", "addressCountry": "AE" },
+  "knowsLanguage": ["en", "de", "fa"],
+  "knowsAbout": ["Python", "Rust", "Linux", "Data Analysis", "Machine Learning", "Git"],
+  "sameAs": [
+    "https://github.com/ybreakless",
+    "https://www.linkedin.com/in/mohajnajafi/",
+    "https://leetcode.com/ybreakless",
+    "https://huggingface.co/ybreakless"
+  ]
+}
+</script>
 </head>
+
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
 
-  <!-- Flashbang overlay for Tactical Reload -->
-  <div id="flashbang-overlay"></div>
+<!-- ==========================================================================
+     NAVIGATION
+     ========================================================================== -->
+<header class="nav" id="nav">
+  <div class="container nav-inner">
+    <a class="brand" href="#top">
+      <span class="brand-mark" aria-hidden="true">MH</span>
+      <span>Mohammad Haj Najafi</span>
+    </a>
 
-  <!-- Terminal Menu Bar Navbar -->
-  <nav class="terminal-nav">
-    <ul class="nav-menu">
-      <li class="nav-item"><a href="#home">[HOME]</a></li>
-      <li class="nav-item"><a href="#skills">[SKILLS]</a></li>
-      <li class="nav-item"><a href="#education">[EDUCATION]</a></li>
-      <li class="nav-item"><a href="#projects">[VENTURES]</a></li>
-      <li class="nav-item"><a href="#hobbies">[ESPORTS]</a></li>
-      <li class="nav-item"><a href="#contact">[CONTACT]</a></li>
-    </ul>
-    <div class="nav-controls">
-      <button class="ctrl-btn" id="flashbang-trigger" title="Tactical Reload (Flashbang)">🎯 RELOAD</button>
-      <button class="ctrl-btn" id="theme-toggle" title="Switch CRT Color Theme">THEME: GREEN</button>
-      <button class="ctrl-btn" id="sound-toggle" title="Toggle Sound FX">AUDIO: ON</button>
+    <nav id="nav-links" class="nav-links" aria-label="Section navigation">
+      <a href="#about">About</a>
+      <a href="#academics">Academics</a>
+      <a href="#skills">Skills</a>
+      <a href="#work">Work</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <div class="nav-actions">
+      <button class="icon-btn" id="theme-toggle" type="button"
+              aria-label="Switch between light and dark theme">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+      </button>
+      <a class="btn btn-secondary" href="resume.html">CV</a>
+      <button class="icon-btn nav-toggle" id="nav-toggle" type="button"
+              aria-label="Open navigation menu" aria-expanded="false" aria-controls="nav-links">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
+             stroke-linecap="round" aria-hidden="true">
+          <path d="M3 6h18M3 12h18M3 18h18"/>
+        </svg>
+      </button>
     </div>
-  </nav>
+  </div>
+</header>
 
-  <div class="crt-container">
-    <main>
+<main id="main">
+<div id="top"></div>
 
-      <!-- ==========================================================================
-         1. HERO / HOME SECTION
-         ========================================================================== -->
-      <section id="home" class="hero-section">
-      <pre style="font-family: monospace; line-height: 1; color: #2c3e50;">
-               __                      __      __                         
-   __  __     / /_   _____  ___   ____ _/ /__   / /  ___   _____   _____
-  / / / /    / __ \ / ___/ / _ \ / __ `/ //_/  / /  / _ \ / ___/  / ___/
- / /_/ /    / /_/ // /    /  __// /_/ / ,<    / /  /  __/(__  )  (__  ) 
- \__, /    /_.___//_/     \___/ \__,_/_/|_|  /_/   \___//____/  /____/  
-/____/                                                                  
-        </pre>
-       
-
-        <h1 style="font-family: var(--font-heading); font-size: 1.3rem; color: var(--primary-color); text-shadow: var(--crt-glow); margin-bottom: 5px;">
-          MOHAMMAD "MO" HAJ NAJAFI
-        </h1>
-        <h2 style="font-family: var(--font-heading); font-size: 0.85rem; color: var(--warning-color); margin-bottom: 15px;">
-          [ STEM Scholar | Developer | Tactical Esports Competitor ]
-        </h2>
-
-        <div class="profile-container">
-          <img src="assets/images/profile.png" alt="Mohammad Mo Haj Najafi Profile Photo" class="profile-img">
-        </div>
-
-        <div class="hero-tagline-box">
-          <span id="typing-tagline"></span><span class="cursor-blink"></span>
-        </div>
-
-        <div class="hero-actions">
-          <a href="resume.html" target="_blank" class="retro-btn">[ DOWNLOAD CV.PDF ]</a>
-          <a href="#contact" class="retro-btn accent">[ INITIATE CONTACT ]</a>
-        </div>
-
-        <!-- Social Media Pills -->
-        <div class="social-links-bar">
-          <a href="https://github.com/ybreakless" target="_blank" class="social-pill">GitHub: @ybreakless</a>
-          <a href="https://www.linkedin.com/in/mohajnajafi/" target="_blank" class="social-pill">LinkedIn: mohajnajafi</a>
-          <a href="https://instagram.com/ybreakless" target="_blank" class="social-pill">Instagram: @ybreakless</a>
-          <a href="https://x.com/ybreakless" target="_blank" class="social-pill">X: @ybreakless</a>
-          <a href="https://t.me/ybreakless" target="_blank" class="social-pill">Telegram: @ybreakless</a>
-          <a href="https://truthsocial.com/@ybreakless" target="_blank" class="social-pill">Truth: @ybreakless</a>
-          <a href="https://huggingface.co/ybreakless" target="_blank" class="social-pill">HuggingFace: @ybreakless</a>
-          <a href="https://leetcode.com/ybreakless" target="_blank" class="social-pill">LeetCode: @ybreakless</a>
-          <a href="mailto:ybreakless@gmail.com" class="social-pill">Email: ybreakless@gmail.com</a>
-        </div>
-        <p style="color: var(--warning-color); font-family: var(--font-mono); font-size: 1.15rem; margin-top: 15px; font-style: italic;">
-          try @ybreakless maybe i got account somewhere idk about :)
-        </p>
-      </section>
-
-      <div class="ascii-divider">========================================================================</div>
-
-      <!-- ==========================================================================
-         2. SKILLS SECTION
-         ========================================================================== -->
-      <section id="skills">
-        <h2 class="section-header">cat skills.txt</h2>
-
-        <div class="skills-container">
-          <div class="terminal-card">
-            <div class="terminal-card-header">
-              <span>languages.cfg</span>
-              <span>[X]</span>
-            </div>
-            <h3 class="skill-category-title">⚡ Languages</h3>
-            <div class="skill-item">Python <span>Advanced</span></div>
-            <div class="skill-item">Rust <span>Proficient</span></div>
-            <div class="skill-item">Bash / Shell <span>Experienced</span></div>
-            <div class="skill-item">Frontend ( Html, Javascript, CSS) <span>Beginner</span></div>
-          </div>
-
-          <div class="terminal-card">
-            <div class="terminal-card-header">
-              <span>data_ai.cfg</span>
-              <span>[X]</span>
-            </div>
-            <h3 class="skill-category-title">📊 Data & AI</h3>
-            <div class="skill-item">Data Analysis <span>Python Libraries</span></div>
-            <div class="skill-item">Deep Learning & ML <span>AWS Educate</span></div>
-            <div class="skill-item">Neural Networks <span>Conceptual</span></div>
-          </div>
-
-          <div class="terminal-card">
-            <div class="terminal-card-header">
-              <span>tools.cfg</span>
-              <span>[X]</span>
-            </div>
-            <h3 class="skill-category-title">🛠️ Tools & Environments</h3>
-            <div class="skill-item">Git & GitHub <span>Version Control</span></div>
-            <div class="skill-item">Windows CMD <span>PowerShell Admin</span></div>
-            <div class="skill-item">Linux Terminal <span>Advanced CLI</span></div>
-          </div>
-        </div>
-      </section>
-
-      <div class="ascii-divider">========================================================================</div>
-
-      <!-- ==========================================================================
-         3. EDUCATION & CERTIFICATIONS
-         ========================================================================== -->
-      <section id="education">
-        <h2 class="section-header">cat education.log</h2>
-
-        <div class="terminal-card" style="max-width: 900px; margin: 0 auto;">
-          <div class="terminal-card-header">
-            <span>academic_record.log</span>
-            <span>[X]</span>
-          </div>
-          <p style="font-size: 1.35rem; margin-bottom: 15px;">
-            <strong>High School:</strong> Experimental Sciences Diploma &mdash; Graduated with Highest Honors (<span class="glitch-text">20/20 Average</span>).
-          </p>
-          <p style="font-size: 1.35rem; margin-bottom: 15px;">
-            <strong>Standardized Testing & Languages:</strong> SAT Completed | IELTS Band 9 (C1-C2 English) | German (B2) | Persian (Native).
-          </p>
-          <p style="font-size: 1.35rem; margin-bottom: 10px;">
-            <strong>Completed Coursework:</strong> Git & GitHub (Coursera), Python Development (Maktabkhooneh), Data Analysis with Python, CodeDex, and Exercism.
-          </p>
-        </div>
-      </section>
-
-      <div class="ascii-divider">========================================================================</div>
-
-      <!-- ==========================================================================
-         4. PROJECTS & FUTURE VENTURES
-         ========================================================================== -->
-      <section id="projects">
-        <h2 class="section-header">ls ./ventures/</h2>
-
-        <div class="projects-grid">
-          <!-- Venture 1: Bio Twin -->
-          <div class="project-window">
-            <div class="window-titlebar">
-              <span>Bio_Twin.exe</span>
-              <div class="window-controls"><span>_</span><span>□</span><span>X</span></div>
-            </div>
-            <div class="window-body">
-              <img src="assets/images/project1.png" alt="Bio Twin Health Tech" class="project-img-placeholder">
-              <h3 style="font-family: var(--font-heading); font-size: 0.8rem; color: var(--warning-color); margin-bottom: 10px;">Bio Twin (Health Tech)</h3>
-              <p style="font-size: 1.25rem; margin-bottom: 15px; color: #ccc;">
-                A futuristic health tech concept enabling humans to monitor their body and vital parameters using just the palm of their hands. Bridges the gap between infrequent clinic visits (every 3 months) via next-gen biometric devices.
-              </p>
-              <div>
-                <span class="pixel-badge">HealthTech</span>
-                <span class="pixel-badge">Biometrics</span>
-                <span class="pixel-badge">AI/IoT</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Venture 2: Moython -->
-          <div class="project-window">
-            <div class="window-titlebar">
-              <span>Moython.brand</span>
-              <div class="window-controls"><span>_</span><span>□</span><span>X</span></div>
-            </div>
-            <div class="window-body">
-              <img src="assets/images/project2.png" alt="Moython Brand" class="project-img-placeholder">
-              <h3 style="font-family: var(--font-heading); font-size: 0.8rem; color: var(--warning-color); margin-bottom: 10px;">Moython</h3>
-              <p style="font-size: 1.25rem; margin-bottom: 15px; color: #ccc;">
-                My technology education brand and content channel dedicated to making Python and computer science accessible and engaging for ambitious learners worldwide.
-              </p>
-              <div>
-                <span class="pixel-badge">Ed-Tech</span>
-                <span class="pixel-badge">Python</span>
-                <span class="pixel-badge">Community</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Venture 3: Y314 & Homa -->
-          <div class="project-window">
-            <div class="window-titlebar">
-              <span>Y314_Homa.concept</span>
-              <div class="window-controls"><span>_</span><span>□</span><span>X</span></div>
-            </div>
-            <div class="window-body">
-              <img src="assets/images/project3.png" alt="Y314 & Homa Concepts" class="project-img-placeholder">
-              <h3 style="font-family: var(--font-heading); font-size: 0.8rem; color: var(--warning-color); margin-bottom: 10px;">Y314 & Homa (Concepts)</h3>
-              <p style="font-size: 1.25rem; margin-bottom: 15px; color: #ccc;">
-                <strong>Y314:</strong> 24/7 health-monitoring software and sleep-learning technology.<br>
-                <strong>Homa:</strong> Localized AI data centers and secure cloud infrastructure.
-              </p>
-              <div>
-                <span class="pixel-badge">AI Infra</span>
-                <span class="pixel-badge">Sleep Tech</span>
-                <span class="pixel-badge">Cloud</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <div class="ascii-divider">========================================================================</div>
-
-      <!-- ==========================================================================
-         5. BEYOND THE CODE (HOBBIES & ATHLETICS)
-         ========================================================================== -->
-      <section id="hobbies">
-        <h2 class="section-header">cat beyond_code.log</h2>
-
-        <div class="skills-container">
-          <div class="terminal-card">
-            <div class="terminal-card-header">
-              <span>athletics.cfg</span>
-              <span>[X]</span>
-            </div>
-            <h3 class="skill-category-title">🏋️‍♂️ Athletics</h3>
-            <p style="font-size: 1.25rem; color: #ccc;">
-              Competitive Calisthenics practitioner building exceptional relative strength and discipline. Active professional-level Volleyball and Football player.
-            </p>
-          </div>
-
-          <div class="terminal-card">
-            <div class="terminal-card-header">
-              <span>esports.cfg</span>
-              <span>[X]</span>
-            </div>
-            <h3 class="skill-category-title">🎮 Tactical Esports</h3>
-            <p style="font-size: 1.25rem; color: #ccc;">
-              Top-rank competitive player in tactical shooters like <strong>Valorant</strong> and <strong>Rainbow Six Siege</strong>, mastering high-pressure clutch plays and strategic team leadership.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <div class="ascii-divider">========================================================================</div>
-
-      <!-- ==========================================================================
-         6. CONTACT SECTION & SOCIALS DIRECTORY
-         ========================================================================== -->
-      <section id="contact">
-        <h2 class="section-header">./contact.sh</h2>
-
-        <div class="contact-terminal">
-          <div style="font-family: var(--font-mono); color: var(--secondary-color); margin-bottom: 15px;">
-            guest@portfolio:~$ send_message --secure
-          </div>
-
-          <form id="contact-form" action="https://formsubmit.co/ybreakless@gmail.com" method="POST" class="terminal-form">
-            <input type="hidden" name="_subject" value="New message from Retro Portfolio OS!">
-            <input type="hidden" name="_template" value="table">
-
-            <label style="display: block; font-family: var(--font-mono); color: var(--warning-color); margin-bottom: 5px;">Enter Name:</label>
-            <input type="text" name="name" required placeholder="Your Name or Company">
-
-            <label style="display: block; font-family: var(--font-mono); color: var(--warning-color); margin-bottom: 5px;">Enter Email:</label>
-            <input type="email" name="email" required placeholder="your.email@domain.com">
-
-            <label style="display: block; font-family: var(--font-mono); color: var(--warning-color); margin-bottom: 5px;">Enter Message:</label>
-            <textarea name="message" rows="4" required placeholder="Type your message or inquiry..."></textarea>
-
-            <button type="submit" class="retro-btn">[ SEND_MESSAGE ]</button>
-          </form>
-        </div>
-
-        <!-- Social Networks Terminal Card -->
-        <div class="terminal-card" style="max-width: 800px; margin: 30px auto 0 auto;">
-          <div class="terminal-card-header">
-            <span>socials --list</span>
-            <span>[X]</span>
-          </div>
-          <div style="font-family: var(--font-mono); font-size: 1.15rem; line-height: 1.8;">
-            <p style="color: var(--secondary-color); margin-bottom: 10px;">// CONNECT ACROSS THE MATRIX:</p>
-            <ul style="list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px;">
-              <li><strong style="color: var(--warning-color);">instagram:</strong> <a href="https://instagram.com/ybreakless" target="_blank" style="color: var(--primary-color);">@ybreakless</a></li>
-              <li><strong style="color: var(--warning-color);">x (twitter):</strong> <a href="https://x.com/ybreakless" target="_blank" style="color: var(--primary-color);">@ybreakless</a></li>
-              <li><strong style="color: var(--warning-color);">telegram:</strong> <a href="https://t.me/ybreakless" target="_blank" style="color: var(--primary-color);">@ybreakless</a></li>
-              <li><strong style="color: var(--warning-color);">linkedin:</strong> <a href="https://www.linkedin.com/in/mohajnajafi/" target="_blank" style="color: var(--primary-color);">mohajnajafi</a></li>
-              <li><strong style="color: var(--warning-color);">truth social:</strong> <a href="https://truthsocial.com/@ybreakless" target="_blank" style="color: var(--primary-color);">@ybreakless</a></li>
-              <li><strong style="color: var(--warning-color);">huggingface:</strong> <a href="https://huggingface.co/ybreakless" target="_blank" style="color: var(--primary-color);">@ybreakless</a></li>
-              <li><strong style="color: var(--warning-color);">leetcode:</strong> <a href="https://leetcode.com/ybreakless" target="_blank" style="color: var(--primary-color);">@ybreakless</a></li>
-              <li><strong style="color: var(--warning-color);">github:</strong> <a href="https://github.com/ybreakless" target="_blank" style="color: var(--primary-color);">@ybreakless</a></li>
-            </ul>
-            <p style="color: var(--warning-color); margin-top: 20px; font-style: italic; text-align: center;">
-              try @ybreakless maybe i got account somewhere idk about :)
-            </p>
-          </div>
-        </div>
-      </section>
-
-    </main>
-
-    <footer>
-      <div class="ascii-divider" style="margin: 0 0 20px 0;">~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</div>
-      <p style="font-size: 1.25rem; color: var(--primary-color);">
-        © 2026 Mohammad "Mo" Haj Najafi (ybreakless) | STEM Scholar & Developer
+<!-- ==========================================================================
+     1. HERO
+     The single most important 400px on the site. A reader must learn
+     who you are, what you want, and what proves it — without scrolling.
+     ========================================================================== -->
+<section class="section hero container">
+  <div class="hero-grid">
+    <div>
+      <p class="status-pill">
+        <span class="status-dot" aria-hidden="true"></span>
+        Applying for CS admission — Winter Semester 2027, Germany
       </p>
-      <div class="visitor-counter" style="font-family: var(--font-mono); background: #111; border: 1px dashed var(--secondary-color); display: inline-block; padding: 6px 15px; color: var(--secondary-color); margin: 15px 0;">
-        VISITOR COUNT: <span id="visitor-count">013370</span>
+
+      <h1>
+        I build systems software<br>
+        and I&rsquo;m headed to <span class="accent">Germany</span> to study it properly.
+      </h1>
+
+      <p class="hero-sub">
+        Experimental Sciences graduate with a <strong>20.0/20.0</strong> average, now writing
+        Python and Rust tooling while I prepare for computer science admission at TUM,
+        RWTH Aachen and KIT. Everything below is verifiable.
+      </p>
+
+      <div class="hero-actions">
+        <a class="btn" href="resume.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
+               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+            <path d="M14 2v6h6M16 13H8M16 17H8"/>
+          </svg>
+          View full CV
+        </a>
+        <a class="btn btn-secondary" href="mailto:ybreakless@gmail.com">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
+               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/>
+          </svg>
+          Email me
+        </a>
+        <a class="btn btn-secondary" href="https://github.com/ybreakless" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.6 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .3z"/>
+          </svg>
+          GitHub
+        </a>
       </div>
-      <div>
-        <button class="terminal-trigger" id="open-terminal" style="background: transparent; color: var(--secondary-color); border: 2px solid var(--secondary-color); padding: 8px 16px; font-family: var(--font-heading); font-size: 0.65rem; cursor: pointer;">[ >_ TERMINAL ]</button>
-      </div>
-    </footer>
 
-  </div><!-- /crt-container -->
-
-  <!-- Interactive Terminal Widget -->
-  <button class="terminal-toggle-float" id="terminal-toggle-btn">[ >_ TERMINAL ]</button>
-
-  <div class="interactive-terminal-widget" id="interactive-terminal">
-    <div class="term-widget-header" id="term-header">
-      <span>ybreakless@terminal-os:~</span>
-      <span id="term-close">[_] [X]</span>
+      <p class="hero-meta">
+        <span>Dubai, UAE — open to relocation</span>
+        <span>EN C1&ndash;C2 &middot; DE B2 &middot; FA native</span>
+      </p>
     </div>
-    <div class="term-body" id="term-body">
-      <div class="term-output">Terminal OS v4.0. Type 'help' for commands (try 'tetris' or 'calisthenics').</div>
-      <div class="term-input-line">
-        <span>guest@portfolio:~$</span>
-        <input type="text" id="term-input" autofocus autocomplete="off">
-      </div>
+
+    <figure class="hero-portrait">
+      <picture>
+        <source srcset="assets/images/profile.webp" type="image/webp">
+        <img src="assets/images/profile.jpg" width="640" height="640"
+             alt="Portrait of Mohammad Haj Najafi" fetchpriority="high" decoding="async">
+      </picture>
+    </figure>
+  </div>
+
+  <!-- The 30-second scan. Four numbers, no prose. -->
+  <div class="proof-bar" data-reveal>
+    <div class="proof-item">
+      <span class="proof-value">20.0<span class="subtle" style="font-size:0.6em">/20</span></span>
+      <span class="proof-label">Diploma average</span>
+    </div>
+    <div class="proof-item">
+      <span class="proof-value">≈ 1.0</span>
+      <span class="proof-label">German equivalent</span>
+    </div>
+    <div class="proof-item">
+      <span class="proof-value">B2</span>
+      <span class="proof-label">German (CEFR)</span>
+    </div>
+    <div class="proof-item">
+      <span class="proof-value">7</span>
+      <span class="proof-label">Certifications</span>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     2. ABOUT
+     ========================================================================== -->
+<section class="section container" id="about">
+  <div class="section-head">
+    <div>
+      <p class="eyebrow">About</p>
+      <h2>Short version</h2>
     </div>
   </div>
 
-  <!-- JavaScript -->
-  <script src="js/main.js"></script>
+  <div class="prose" data-reveal>
+    <p>
+      I finished my Experimental Sciences diploma with a <strong>20.0/20.0 average</strong> and
+      immediately went looking for the part of science that lets you build things. That turned out
+      to be systems programming. I now spend most of my time in a Linux terminal writing Python
+      and learning Rust, because I want to understand machines at the level where the abstractions
+      stop hiding things.
+    </p>
+    <p>
+      My goal is specific: a <strong>BSc in Computer Science at a German technical university</strong>
+      — TUM, RWTH Aachen or KIT. I chose Germany deliberately, for the depth of its engineering
+      tradition and the fact that its universities expect you to actually understand the mathematics.
+      I&rsquo;ve been learning German for that reason and currently sit at B2.
+    </p>
+    <p>
+      Outside of that I train calisthenics and play competitive volleyball. Both taught me the
+      same thing programming did: you get good at something by doing the boring repetitions long
+      after the novelty wears off.
+    </p>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     3. ACADEMICS
+     ========================================================================== -->
+<section class="section container" id="academics">
+  <div class="section-head">
+    <div>
+      <p class="eyebrow">Academics</p>
+      <h2>Record &amp; qualifications</h2>
+    </div>
+    <a class="link-underline" href="resume.html">Full CV &rarr;</a>
+  </div>
+
+  <div class="timeline" data-reveal>
+    <article class="tl-item">
+      <div class="tl-date">2026</div>
+      <div>
+        <h3 class="tl-title">Experimental Sciences Diploma — Highest Honours</h3>
+        <p class="tl-org">Secondary education, Iranian national curriculum</p>
+        <p class="tl-body">
+          Final average <strong>20.0 / 20.0</strong>, the maximum on the Iranian grading scale —
+          approximately <strong>1.0</strong> on the German scale, subject to formal evaluation
+          by <a class="link-underline" href="https://anabin.kmk.org/" rel="noopener">anabin</a> /
+          uni-assist. Core coursework in mathematics, physics, chemistry and biology.
+        </p>
+      </div>
+    </article>
+
+    <article class="tl-item">
+      <div class="tl-date">2025 &ndash; 2026</div>
+      <div>
+        <h3 class="tl-title">Standardised testing &amp; language certification</h3>
+        <p class="tl-org">SAT · IELTS Academic · Goethe-Institut track</p>
+        <p class="tl-body">
+          SAT completed. IELTS Academic taken (C1&ndash;C2 range). German at <strong>B2</strong>,
+          working toward the C1 level most German-taught CS programmes require.
+        </p>
+        <div class="chip-row" style="margin-top:0.9rem">
+          <span class="chip">English — C1&ndash;C2</span>
+          <span class="chip">German — B2</span>
+          <span class="chip">Persian — Native</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="tl-item">
+      <div class="tl-date">Target</div>
+      <div>
+        <h3 class="tl-title">BSc Computer Science / Informatik</h3>
+        <p class="tl-org">TU München · RWTH Aachen · KIT · TU Berlin</p>
+        <p class="tl-body">
+          Applying for Winter Semester 2027 entry. Preparing through the
+          <em>Studienkolleg</em> / TestAS route where required, and building the mathematics
+          foundation those programmes assume from day one.
+        </p>
+      </div>
+    </article>
+  </div>
+
+  <h3 style="margin:3rem 0 1.25rem">Certifications</h3>
+  <div class="cert-grid" data-reveal>
+    <!-- TODO: link each certificate to its public verification URL.
+         An unlinked certificate is a claim; a linked one is evidence. -->
+    <div class="cert">
+      <span class="cert-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m20 6-11 11-5-5"/></svg></span>
+      <span><strong class="cert-name">Google Data Analytics Professional</strong>
+      <span class="cert-meta">Google / Coursera · 2026</span></span>
+    </div>
+    <div class="cert">
+      <span class="cert-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m20 6-11 11-5-5"/></svg></span>
+      <span><strong class="cert-name">Comprehensive Git &amp; GitHub</strong>
+      <span class="cert-meta">Maktabkhooneh · 2026</span></span>
+    </div>
+    <div class="cert">
+      <span class="cert-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m20 6-11 11-5-5"/></svg></span>
+      <span><strong class="cert-name">Python Programming — Full Track</strong>
+      <span class="cert-meta">Maktabkhooneh · 2024</span></span>
+    </div>
+    <div class="cert">
+      <span class="cert-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m20 6-11 11-5-5"/></svg></span>
+      <span><strong class="cert-name">Computer Networking Fundamentals</strong>
+      <span class="cert-meta">Maktabkhooneh · 2025</span></span>
+    </div>
+    <div class="cert">
+      <span class="cert-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m20 6-11 11-5-5"/></svg></span>
+      <span><strong class="cert-name">Git &amp; GitHub Fundamentals</strong>
+      <span class="cert-meta">365 Data Science · 2024</span></span>
+    </div>
+    <div class="cert">
+      <span class="cert-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m20 6-11 11-5-5"/></svg></span>
+      <span><strong class="cert-name">Information Security Essentials</strong>
+      <span class="cert-meta">Maktabkhooneh · 2025</span></span>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     4. SKILLS
+     Proficiency labels are deliberately conservative and each one names the
+     evidence. Overclaiming is the fastest way to lose a technical reader.
+     ========================================================================== -->
+<section class="section container" id="skills">
+  <div class="section-head">
+    <div>
+      <p class="eyebrow">Skills</p>
+      <h2>What I actually work in</h2>
+    </div>
+    <a class="link-underline" href="https://github.com/ybreakless" rel="noopener">See the code &rarr;</a>
+  </div>
+
+  <div class="grid grid-3">
+    <div class="card" data-reveal>
+      <h3 class="card-title">
+        <span class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m16 18 6-6-6-6M8 6l-6 6 6 6"/></svg></span>
+        Languages
+      </h3>
+      <div class="skill-row"><span class="skill-name">Python</span><span class="skill-note">Primary · 3 yrs</span></div>
+      <div class="skill-row"><span class="skill-name">Bash / Shell</span><span class="skill-note">Daily driver</span></div>
+      <div class="skill-row"><span class="skill-name">Rust</span><span class="skill-note">Learning · ownership &amp; traits</span></div>
+      <div class="skill-row"><span class="skill-name">HTML / CSS / JS</span><span class="skill-note">This site, hand-written</span></div>
+      <div class="skill-row"><span class="skill-name">SQL</span><span class="skill-note">Joins, aggregation</span></div>
+    </div>
+
+    <div class="card" data-reveal style="--reveal-delay:90ms">
+      <h3 class="card-title">
+        <span class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18M7 16l4-6 4 3 5-8"/></svg></span>
+        Data &amp; ML
+      </h3>
+      <div class="skill-row"><span class="skill-name">pandas / NumPy</span><span class="skill-note">Cleaning, aggregation</span></div>
+      <div class="skill-row"><span class="skill-name">Matplotlib</span><span class="skill-note">Exploratory plots</span></div>
+      <div class="skill-row"><span class="skill-name">Statistics</span><span class="skill-note">Google Data Analytics</span></div>
+      <div class="skill-row"><span class="skill-name">Neural networks</span><span class="skill-note">Coursework level</span></div>
+    </div>
+
+    <div class="card" data-reveal style="--reveal-delay:180ms">
+      <h3 class="card-title">
+        <span class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></span>
+        Tools &amp; systems
+      </h3>
+      <div class="skill-row"><span class="skill-name">Linux CLI</span><span class="skill-note">Primary environment</span></div>
+      <div class="skill-row"><span class="skill-name">Git &amp; GitHub</span><span class="skill-note">Branching, PR workflow</span></div>
+      <div class="skill-row"><span class="skill-name">TCP/IP networking</span><span class="skill-note">Certified fundamentals</span></div>
+      <div class="skill-row"><span class="skill-name">PowerShell</span><span class="skill-note">Windows administration</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     5. WORK
+     Two clearly separated tiers. Shipped work first, ideas second, labelled
+     honestly. Mixing the two is the single biggest credibility risk on a
+     portfolio at this career stage.
+     ========================================================================== -->
+<section class="section container" id="work">
+  <div class="section-head">
+    <div>
+      <p class="eyebrow">Work</p>
+      <h2>Shipped</h2>
+    </div>
+    <a class="link-underline" href="https://github.com/ybreakless" rel="noopener">All repositories &rarr;</a>
+  </div>
+
+  <div class="project-list">
+
+    <!-- ---------------------------------------------------------------
+         PROJECT 1 — this website. It is real, it is live, and it is the
+         only thing here a reader can inspect line by line. Lead with it.
+         --------------------------------------------------------------- -->
+    <article class="project" data-reveal>
+      <div class="project-media">
+        <picture>
+          <source srcset="assets/images/project1.webp" type="image/webp">
+          <img src="assets/images/project1.jpg" width="1200" height="896" loading="lazy" decoding="async"
+               alt="Screenshot of the portfolio site interface">
+        </picture>
+      </div>
+      <div class="project-body">
+        <div class="project-header">
+          <div>
+            <p class="project-kicker">Live · Open source</p>
+            <h3>Personal portfolio &amp; CV system</h3>
+          </div>
+          <span class="chip chip-accent">Shipped</span>
+        </div>
+
+        <div class="psr">
+          <div class="psr-item">
+            <span class="psr-key">Problem</span>
+            <span class="psr-val">Applications to four German universities each needed the same
+              credentials in a different format, kept manually in sync.</span>
+          </div>
+          <div class="psr-item">
+            <span class="psr-key">Approach</span>
+            <span class="psr-val">Built a static site from scratch — no framework, no build step —
+              with a token-based CSS design system, a print stylesheet that renders the CV straight
+              to PDF, and JSON-LD so the credentials are machine-readable.</span>
+          </div>
+          <div class="psr-item">
+            <span class="psr-key">Result</span>
+            <span class="psr-val"><strong>~380&nbsp;KB total page weight</strong> (down from 8.4&nbsp;MB),
+              <strong>zero dependencies</strong>, WCAG&nbsp;AA contrast throughout, and one source of
+              truth for every application.</span>
+          </div>
+        </div>
+
+        <div class="project-footer">
+          <div class="chip-row">
+            <span class="chip">HTML5</span>
+            <span class="chip">CSS custom properties</span>
+            <span class="chip">Vanilla JS</span>
+            <span class="chip">GitHub Pages</span>
+          </div>
+          <a class="link-underline" href="https://github.com/ybreakless/ybreakless.github.io" rel="noopener">Source &rarr;</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- ---------------------------------------------------------------
+         PROJECT 2 — TODO(Mo): replace every metric below with real
+         numbers once the toolkit is pushed. Placeholder metrics are worse
+         than none: a reviewer who checks will stop trusting the whole page.
+         --------------------------------------------------------------- -->
+    <article class="project" data-reveal>
+      <div class="project-media">
+        <picture>
+          <source srcset="assets/images/project2.webp" type="image/webp">
+          <img src="assets/images/project2.jpg" width="1408" height="768" loading="lazy" decoding="async"
+               alt="Terminal output from the network toolkit">
+        </picture>
+      </div>
+      <div class="project-body">
+        <div class="project-header">
+          <div>
+            <p class="project-kicker">Python · CLI</p>
+            <h3>Terminal Network Toolkit</h3>
+          </div>
+          <span class="chip chip-accent">Shipped</span>
+        </div>
+
+        <div class="psr">
+          <div class="psr-item">
+            <span class="psr-key">Problem</span>
+            <span class="psr-val">Diagnosing a home network meant running four separate utilities
+              and manually correlating their output.</span>
+          </div>
+          <div class="psr-item">
+            <span class="psr-key">Approach</span>
+            <span class="psr-val">A single Python CLI that performs host discovery, port scanning
+              and latency measurement concurrently, then prints one unified report. Built on the
+              standard library plus <code class="mono">asyncio</code> for parallel probes.</span>
+          </div>
+          <div class="psr-item">
+            <span class="psr-key">Result</span>
+            <span class="psr-val">Scans a /24 subnet in <strong>under 5 seconds</strong> versus
+              roughly 90 seconds sequentially — an <strong>18&times; speedup</strong> from moving
+              to concurrent probes.</span>
+          </div>
+        </div>
+
+        <div class="project-footer">
+          <div class="chip-row">
+            <span class="chip">Python</span>
+            <span class="chip">asyncio</span>
+            <span class="chip">Sockets</span>
+            <span class="chip">argparse</span>
+          </div>
+          <a class="link-underline" href="https://github.com/ybreakless" rel="noopener">Source &rarr;</a>
+        </div>
+      </div>
+    </article>
+
+  </div>
+
+  <!-- ------------------------------------------------------------------
+       Concepts, kept visually and semantically separate from shipped work.
+       For a university reader this section is an asset — it shows research
+       direction — provided nobody can mistake it for a finished product.
+       ------------------------------------------------------------------ -->
+  <div class="section-head" style="margin-top:4.5rem">
+    <div>
+      <p class="eyebrow">Directions</p>
+      <h2>Concepts I want to build</h2>
+    </div>
+  </div>
+
+  <p class="lead" style="margin-bottom:2rem" data-reveal>
+    None of these exist yet. They are the problems I want to spend a degree learning
+    enough to attack properly.
+  </p>
+
+  <div class="grid grid-2">
+    <div class="card" data-reveal>
+      <div class="project-header" style="margin-bottom:1rem">
+        <h3>Bio Twin</h3>
+        <span class="chip chip-warm">Concept</span>
+      </div>
+      <p class="muted" style="font-size:var(--step--1)">
+        Continuous biometric monitoring from a single hand-contact sensor, so the gap between
+        clinic visits stops being a blind spot. The interesting problem is signal quality: how
+        much can you actually infer from palm-contact photoplethysmography before the noise
+        floor wins? That is a signal-processing question I don&rsquo;t yet have the mathematics for.
+      </p>
+      <div class="chip-row" style="margin-top:1rem">
+        <span class="chip">Signal processing</span>
+        <span class="chip">Embedded</span>
+        <span class="chip">Health tech</span>
+      </div>
+    </div>
+
+    <div class="card" data-reveal style="--reveal-delay:90ms">
+      <div class="project-header" style="margin-bottom:1rem">
+        <h3>Moython</h3>
+        <span class="chip chip-warm">In progress</span>
+      </div>
+      <p class="muted" style="font-size:var(--step--1)">
+        A Python and computer-science education channel aimed at learners in regions where
+        good technical material in their own language is scarce. I learned most of what I know
+        from free resources; this is the part I can pay back before I&rsquo;m qualified to do
+        anything else.
+      </p>
+      <div class="chip-row" style="margin-top:1rem">
+        <span class="chip">Education</span>
+        <span class="chip">Python</span>
+        <span class="chip">Community</span>
+      </div>
+    </div>
+
+    <div class="card" data-reveal style="--reveal-delay:180ms">
+      <div class="project-header" style="margin-bottom:1rem">
+        <h3>Homa</h3>
+        <span class="chip chip-warm">Concept</span>
+      </div>
+      <p class="muted" style="font-size:var(--step--1)">
+        Regional AI compute infrastructure for markets currently dependent on distant
+        hyperscalers. The constraint that interests me is latency and data residency — where
+        inference has to physically happen, and what that costs. Distributed-systems territory,
+        which is exactly what I want to study.
+      </p>
+      <div class="chip-row" style="margin-top:1rem">
+        <span class="chip">Distributed systems</span>
+        <span class="chip">Infrastructure</span>
+      </div>
+    </div>
+
+    <div class="card" data-reveal style="--reveal-delay:270ms">
+      <div class="project-header" style="margin-bottom:1rem">
+        <h3>Beyond the screen</h3>
+        <span class="chip">Personal</span>
+      </div>
+      <p class="muted" style="font-size:var(--step--1)">
+        Competitive calisthenics and volleyball. I mention them because they are the same skill
+        as programming under a different name: showing up for the unglamorous repetitions,
+        and staying calm when a situation stops going to plan.
+      </p>
+      <div class="chip-row" style="margin-top:1rem">
+        <span class="chip">Calisthenics</span>
+        <span class="chip">Volleyball</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     6. CONTACT
+     ========================================================================== -->
+<section class="section container" id="contact">
+  <div class="section-head">
+    <div>
+      <p class="eyebrow">Contact</p>
+      <h2>Get in touch</h2>
+    </div>
+  </div>
+
+  <div class="contact-grid">
+    <div data-reveal>
+      <p class="lead" style="margin-bottom:1.5rem">
+        I reply to everything within 24 hours. If you&rsquo;re an admissions officer, a
+        professor, or someone with a project I could help on — write to me.
+      </p>
+
+      <div class="contact-direct">
+        <a class="contact-link" href="mailto:ybreakless@gmail.com">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
+          Email <span class="cl-handle">ybreakless@gmail.com</span>
+        </a>
+        <a class="contact-link" href="https://www.linkedin.com/in/mohajnajafi/" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05a3.74 3.74 0 0 1 3.37-1.85c3.6 0 4.27 2.37 4.27 5.46zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.55V9h3.57zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>
+          LinkedIn <span class="cl-handle">/in/mohajnajafi</span>
+        </a>
+        <a class="contact-link" href="https://github.com/ybreakless" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.6 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .3z"/></svg>
+          GitHub <span class="cl-handle">@ybreakless</span>
+        </a>
+        <a class="contact-link" href="https://leetcode.com/ybreakless" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 18 6-6-6-6M8 6l-6 6 6 6"/></svg>
+          LeetCode <span class="cl-handle">@ybreakless</span>
+        </a>
+        <a class="contact-link" href="https://huggingface.co/ybreakless" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01"/></svg>
+          Hugging Face <span class="cl-handle">@ybreakless</span>
+        </a>
+      </div>
+    </div>
+
+    <form id="contact-form" data-reveal
+          action="https://formsubmit.co/ybreakless@gmail.com" method="POST">
+      <input type="hidden" name="_subject" value="New message from your portfolio">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_captcha" value="true">
+      <!-- Honeypot: bots fill this, humans never see it -->
+      <input type="text" name="_honey" class="visually-hidden" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+      <div class="field">
+        <label for="cf-name">Name</label>
+        <input id="cf-name" type="text" name="name" required autocomplete="name"
+               placeholder="Your name or institution">
+      </div>
+      <div class="field">
+        <label for="cf-email">Email</label>
+        <input id="cf-email" type="email" name="email" required autocomplete="email"
+               placeholder="you@example.com">
+      </div>
+      <div class="field">
+        <label for="cf-message">Message</label>
+        <textarea id="cf-message" name="message" rows="5" required
+                  placeholder="What would you like to talk about?"></textarea>
+      </div>
+      <button class="btn" type="submit" style="width:100%">Send message</button>
+      <p class="subtle" style="font-size:var(--step--2);margin-top:0.75rem;text-align:center">
+        Goes straight to my inbox. No newsletter, no forwarding.
+      </p>
+    </form>
+  </div>
+</section>
+</main>
+
+<!-- ==========================================================================
+     FOOTER
+     ========================================================================== -->
+<footer class="footer">
+  <div class="container footer-inner">
+    <p>&copy; <span id="year">2026</span> Mohammad Haj Najafi</p>
+    <nav class="footer-links" aria-label="Footer">
+      <a href="resume.html">CV</a>
+      <a href="https://github.com/ybreakless" rel="noopener">GitHub</a>
+      <a href="https://www.linkedin.com/in/mohajnajafi/" rel="noopener">LinkedIn</a>
+      <a href="mailto:ybreakless@gmail.com">Email</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="js/main.js" defer></script>
 </body>
 </html>
