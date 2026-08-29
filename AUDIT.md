@@ -319,3 +319,99 @@ The old site had one real virtue: it was *made*, not assembled from a template, 
 What it lacked was the discipline to separate what you've done from what you intend to do. You have a genuinely strong hand: a maximum diploma average, B2 German at eighteen, real self-directed learning, and the ability to hand-write a website. None of that needed embellishment. It needed to be laid out clearly and made checkable.
 
 Now go measure that scan time.
+
+---
+
+# Addendum — rebuild of 29 August 2026
+
+The July audit above still stands; nothing in it was reversed. This entry
+records what changed since, and why.
+
+## What prompted it
+
+Two things. First, the positioning was incomplete: the site explained that
+the goal was Informatik in Germany but never said what the Germany was *for*,
+which left an Experimental Sciences diploma looking like a discarded first
+attempt rather than the reason for everything after it. Second, the page was
+carrying more biography than it needed to.
+
+## Positioning
+
+The site now states a four-stage trajectory: **science diploma → Informatik
+in Germany → computational biology in Switzerland → biotechnology, on the
+compute side.** That reframing costs nothing and fixes the largest remaining
+weakness in the story, because it turns the biology background from a
+non-sequitur into the premise. Sequence alignment, structure prediction and
+population genetics are algorithms problems; saying so out loud makes the
+degree choice legible.
+
+## Less person, more record
+
+Removed from the public page: the portrait, the city, the plaintext email
+address (now assembled in JavaScript; the form works without it), the
+personal-life card, and the biography framing generally. The name stays —
+in `<title>`, in the JSON-LD and on the CV — because the readers this site
+is built for arrive holding an application with that name on it, and a site
+that hides it is useless to them.
+
+What replaced it is the record: a trajectory, an evidence table, and a
+console that will print any of it on request.
+
+## Design
+
+Monochrome. Every colour token is now a grey, in both themes; hierarchy
+comes from weight, size, spacing and rule thickness instead of hue. The
+periwinkle accent is gone. Measured, not eyeballed: the lowest text contrast
+pair anywhere on the page is **4.54:1** (light `--fg-subtle` on `--bg-sunken`),
+which was found by measurement at 4.47:1 and corrected.
+
+## Illustrations
+
+The three AI-generated concept images and the illustrated avatar were
+**deleted**, per §4 of the audit. They depicted nothing that exists and read
+as AI art on sight. In their place, `tools/gen-art.mjs` plots four drawings
+from small models of what they depict — a self-avoiding lattice walk, a stage
+timeline with a load profile, a sequence alignment, a periodic biosignal —
+using a fixed-seed PRNG so the output is byte-identical on every run. They
+are used as CSS masks over `currentColor`, so one asset serves both themes.
+
+## Things the site now demonstrates rather than claims
+
+- an interactive console with completion, history and edit-distance
+  suggestions (`js/terminal.js`)
+- a tween engine that solves the CSS easing curve numerically so JS- and
+  CSS-driven motion stay in step (`js/motion.js`)
+- eight locales including RTL, with English snapshotted from the DOM so it
+  cannot drift (`js/i18n.js`)
+
+## The placeholder metric
+
+§4 flagged the Terminal Network Toolkit's *"18× speedup"* as a structurally
+correct sentence with an invented number. **It has been removed from both
+pages** and replaced with an explicit statement that the figure is absent
+because it has not been benchmarked. That is a stronger sentence than the
+invented one, and it is true.
+
+## Verified in this build
+
+| | |
+|---|---|
+| Contrast | lowest pair 4.54:1 — AA in both themes |
+| Horizontal overflow | none, 320 → 1440px, in all 8 locales |
+| Markup | 0 unclosed tags, 0 mismatches, 0 duplicate ids across 3 pages |
+| Labels / anchors | every input labelled; no dangling `#anchor` or `aria-controls` |
+| Headings | no skipped levels, exactly one `h1` |
+| JavaScript off | page renders complete, with true values, and the form still posts |
+| CV print | 2 A4 pages, no orphaned sections |
+| Page weight | ~70 KB gzipped for a first view (was 8.4 MB) |
+| Behaviour | 35/35 automated end-to-end assertions, 0 console errors |
+
+## Still outstanding
+
+Unchanged from §8, and still in this order:
+
+1. Confirm the admission pathway on anabin and uni-assist.
+2. Certificate verification URLs.
+3. Benchmark the toolkit, then publish it with the number.
+4. The real IELTS band.
+5. The official grade conversion, replacing the `≈1.0` estimate.

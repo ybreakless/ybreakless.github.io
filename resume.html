@@ -4,8 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Curriculum Vitae — Mohammad Haj Najafi</title>
-<meta name="description" content="Curriculum vitae of Mohammad Haj Najafi — Experimental Sciences graduate applying to computer science programmes at German technical universities.">
+<meta name="description" content="Curriculum vitae: Experimental Sciences graduate applying for Informatik at German technical universities, working toward computational biology in Switzerland.">
 <link rel="canonical" href="https://ybreakless.github.io/resume.html">
+<meta name="robots" content="index, follow">
+<link rel="icon" type="image/svg+xml" href="assets/art/favicon.svg">
 <link rel="icon" type="image/png" href="assets/images/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,17 +17,20 @@
 /* ==========================================================================
    CV — standalone stylesheet.
 
-   Designed for A4 first and screen second, because the version that matters
-   is the PDF a German admissions office prints out. Uses pt units, avoids
-   colour dependence, and keeps every block off a page break.
+   A4 first, screen second. The version that decides anything is the PDF a
+   scholarship office prints, so this file works in pt, avoids depending on
+   colour to carry meaning, and keeps every entry off a page break.
+
+   Monochrome, matching the portfolio: on a laser printer the old blue
+   headings came out as an indeterminate grey anyway.
    ========================================================================== */
 
 :root {
-  --ink:      #14161a;
-  --ink-soft: #4a5058;
-  --ink-faint:#787f88;
-  --rule:     #d8dbdf;
-  --accent:   #2f4bc4;
+  --ink:       #101214;
+  --ink-soft:  #3f454c;
+  --ink-faint: #6b7178;
+  --rule:      #d4d7db;
+  --rule-hard: #101214;
   --sans: "Inter", -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   --mono: "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
 }
@@ -34,7 +39,7 @@
 * { margin: 0; }
 
 body {
-  background: #eceef1;
+  background: #e9eaec;
   color: var(--ink);
   font-family: var(--sans);
   font-size: 10.5pt;
@@ -46,132 +51,97 @@ body {
 .sheet {
   max-width: 210mm;
   margin: 0 auto;
-  padding: 18mm 16mm;
+  padding: 17mm 16mm;
   background: #fff;
-  box-shadow: 0 10px 40px -12px rgba(0,0,0,.22);
+  box-shadow: 0 10px 40px -14px rgba(0, 0, 0, 0.28);
 }
 
-a { color: var(--accent); text-decoration: none; }
-a:hover { text-decoration: underline; }
+a { color: inherit; text-decoration: underline; text-underline-offset: 2pt; text-decoration-color: #b9bdc2; }
+a:hover { text-decoration-color: currentColor; }
 
-/* --- Header ------------------------------------------------------------- */
-.cv-head { border-bottom: 2px solid var(--ink); padding-bottom: 10pt; margin-bottom: 14pt; }
-.cv-head h1 {
-  font-size: 21pt;
-  font-weight: 700;
-  letter-spacing: -0.025em;
-  line-height: 1.1;
-  margin-bottom: 3pt;
-}
-.cv-role {
-  font-size: 11pt;
-  color: var(--ink-soft);
-  font-weight: 500;
-  margin-bottom: 8pt;
-}
-.cv-contact {
+/* --- toolbar (screen only) ---------------------------------------------- */
+.toolbar {
+  max-width: 210mm;
+  margin: 0 auto 1rem;
   display: flex;
-  flex-wrap: wrap;
-  gap: 4pt 14pt;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
   font-family: var(--mono);
-  font-size: 8.5pt;
-  color: var(--ink-soft);
+  font-size: 9pt;
+}
+.toolbar a { text-decoration: none; color: var(--ink-soft); }
+.toolbar a:hover { color: var(--ink); }
+.toolbar button {
+  font: inherit;
+  padding: 0.45rem 0.9rem;
+  border: 1px solid var(--ink);
+  background: var(--ink);
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.toolbar button:hover { opacity: 0.85; }
+
+/* --- header -------------------------------------------------------------- */
+.cv-head { border-bottom: 2pt solid var(--rule-hard); padding-bottom: 9pt; margin-bottom: 13pt; }
+.cv-head h1 { font-size: 21pt; font-weight: 700; letter-spacing: -0.03em; line-height: 1.08; }
+.cv-role { font-size: 10.5pt; color: var(--ink-soft); font-weight: 500; margin: 2pt 0 7pt; }
+.cv-contact {
+  display: flex; flex-wrap: wrap; gap: 3pt 13pt;
+  font-family: var(--mono); font-size: 8.5pt; color: var(--ink-soft);
 }
 
-/* --- Sections ----------------------------------------------------------- */
-.cv-section { margin-bottom: 14pt; break-inside: avoid; }
+/* --- sections ------------------------------------------------------------ */
+.cv-section { margin-bottom: 13pt; }
+/* Sections must be allowed to break: `break-inside: avoid` on a tall one
+   (Projects) pushes it wholesale to the next sheet and leaves half of page
+   one empty. Individual entries stay intact; the heading stays with the
+   first entry under it. */
 .cv-section h2 {
-  font-size: 8.5pt;
-  font-weight: 700;
-  letter-spacing: 0.13em;
-  text-transform: uppercase;
-  color: var(--ink-faint);
-  border-bottom: 1px solid var(--rule);
-  padding-bottom: 3pt;
-  margin-bottom: 8pt;
+  font-size: 8pt; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--ink-faint); border-bottom: 0.75pt solid var(--rule);
+  padding-bottom: 3pt; margin-bottom: 7pt;
+  break-after: avoid;
 }
 
 .entry { margin-bottom: 9pt; break-inside: avoid; }
 .entry:last-child { margin-bottom: 0; }
-.entry-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 10pt;
-}
+.entry-top { display: flex; justify-content: space-between; align-items: baseline; gap: 10pt; }
 .entry-title { font-weight: 650; font-size: 10.5pt; }
-.entry-date {
-  font-family: var(--mono);
-  font-size: 8.5pt;
-  color: var(--ink-faint);
-  white-space: nowrap;
-}
-.entry-sub { color: var(--accent); font-size: 9.5pt; margin-bottom: 3pt; }
+.entry-date { font-family: var(--mono); font-size: 8.5pt; color: var(--ink-faint); white-space: nowrap; }
+.entry-sub { font-family: var(--mono); font-size: 8.5pt; color: var(--ink-faint); margin-bottom: 2pt; }
 .entry-body { color: var(--ink-soft); font-size: 9.5pt; }
 
-ul.bullets { padding-left: 13pt; margin-top: 3pt; }
-ul.bullets li {
-  list-style: disc;
-  color: var(--ink-soft);
-  font-size: 9.5pt;
-  margin-bottom: 2pt;
-}
+ul.bullets { padding-left: 12pt; margin-top: 2pt; }
+ul.bullets li { list-style: disc; color: var(--ink-soft); font-size: 9.5pt; margin-bottom: 2pt; }
 ul.bullets strong { color: var(--ink); font-weight: 600; }
 
-/* Two-column key/value rows for skills and languages */
-.kv { display: grid; grid-template-columns: 108pt 1fr; gap: 4pt 10pt; font-size: 9.5pt; }
-.kv dt { font-weight: 600; }
-.kv dd { color: var(--ink-soft); margin: 0; }
+dl.kv { display: grid; grid-template-columns: 26mm 1fr; gap: 3pt 8pt; font-size: 9.5pt; }
+dl.kv dt { font-family: var(--mono); font-size: 8.5pt; color: var(--ink-faint); padding-top: 1pt; }
+dl.kv dd { color: var(--ink-soft); }
 
-.cert-cols {
-  columns: 2;
-  column-gap: 18pt;
-  font-size: 9.5pt;
-  color: var(--ink-soft);
-}
-.cert-cols li { break-inside: avoid; margin-bottom: 3pt; list-style: none; }
-.cert-cols li::before { content: "▸ "; color: var(--accent); }
+ul.cols { columns: 2; column-gap: 10mm; font-size: 9.5pt; color: var(--ink-soft); }
+ul.cols li { break-inside: avoid; margin-bottom: 2pt; }
+ul.bullets li { break-inside: avoid; }
 
-/* --- Toolbar (screen only) ---------------------------------------------- */
-.toolbar {
-  position: fixed;
-  top: 1rem; right: 1rem;
-  display: flex; gap: .5rem;
-  z-index: 10;
-}
-.toolbar a, .toolbar button {
-  font-family: var(--sans);
-  font-size: 9pt;
-  font-weight: 600;
-  padding: .55rem 1rem;
-  border-radius: 8px;
-  border: 1px solid var(--rule);
-  background: #fff;
-  color: var(--ink);
-  cursor: pointer;
-  text-decoration: none;
-  box-shadow: 0 2px 8px -2px rgba(0,0,0,.15);
-}
-.toolbar .primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+.note { font-size: 8.5pt; color: var(--ink-faint); margin-top: 4pt; }
 
-/* --- Print -------------------------------------------------------------- */
-@page { size: A4; margin: 14mm; }
-
+/* --- print --------------------------------------------------------------- */
 @media print {
+  @page { size: A4; margin: 14mm 13mm; }
   body { background: #fff; padding: 0; font-size: 10pt; }
-  .sheet { box-shadow: none; padding: 0; max-width: none; }
+  .sheet { max-width: none; padding: 0; box-shadow: none; }
   .toolbar { display: none; }
-  a { color: var(--ink); }
-  a::after { content: ""; }
+  a { text-decoration: none; }
 }
 
-@media (max-width: 640px) {
-  body { padding: 1rem .5rem 3rem; }
-  .sheet { padding: 20px 18px; }
-  .kv { grid-template-columns: 1fr; gap: 1pt; }
-  .kv dd { margin-bottom: 5pt; }
-  .cert-cols { columns: 1; }
-  .toolbar { position: static; margin: 0 auto 1rem; justify-content: center; }
+@media (max-width: 620px) {
+  body { padding: 1rem 0.5rem 3rem; }
+  .sheet { padding: 8mm 6mm; }
+  ul.cols { columns: 1; }
+  dl.kv { grid-template-columns: 1fr; gap: 1pt 0; }
+  dl.kv dd { margin-bottom: 4pt; }
 }
 </style>
 </head>
@@ -180,48 +150,39 @@ ul.bullets strong { color: var(--ink); font-weight: 600; }
 
 <div class="toolbar">
   <a href="index.html">&larr; Portfolio</a>
-  <button class="primary" type="button" onclick="window.print()">Download PDF</button>
+  <button type="button" onclick="window.print()">Print / save as PDF</button>
 </div>
 
 <article class="sheet">
 
-  <!-- ======================================================================
-       HEADER
-       ====================================================================== -->
   <header class="cv-head">
     <h1>Mohammad Haj Najafi</h1>
-    <p class="cv-role">Computer Science Applicant &middot; Systems &amp; Python Developer</p>
+    <p class="cv-role">Computer science applicant &middot; Python &amp; Linux systems</p>
     <div class="cv-contact">
       <span>ybreakless@gmail.com</span>
-      <span>Dubai, UAE</span>
       <span>github.com/ybreakless</span>
       <span>linkedin.com/in/mohajnajafi</span>
       <span>ybreakless.github.io</span>
     </div>
   </header>
 
-  <!-- ======================================================================
-       PROFILE
-       ====================================================================== -->
   <section class="cv-section">
     <h2>Profile</h2>
     <p class="entry-body">
       Experimental Sciences graduate with a maximum 20.0/20.0 diploma average, applying for
-      BSc Computer Science admission at German technical universities for Winter Semester 2027.
-      Self-taught in Python and Linux systems tooling; currently learning Rust. German at B2 and
-      progressing toward C1. Looking for a programme with a strong theoretical mathematics core.
+      BSc Informatik at German technical universities for Winter Semester 2027. Self-taught in
+      Python and Linux systems tooling; currently learning Rust. German at B2 and working toward
+      C1. The longer objective is computational biology: the science background is the reason
+      for the computer science, not a detour from it.
     </p>
   </section>
 
-  <!-- ======================================================================
-       EDUCATION
-       ====================================================================== -->
   <section class="cv-section">
     <h2>Education</h2>
 
     <div class="entry">
       <div class="entry-top">
-        <span class="entry-title">Experimental Sciences Diploma — Highest Honours</span>
+        <span class="entry-title">Experimental Sciences Diploma — highest honours</span>
         <span class="entry-date">2026</span>
       </div>
       <p class="entry-sub">Iranian national secondary curriculum</p>
@@ -235,20 +196,29 @@ ul.bullets strong { color: var(--ink); font-weight: 600; }
 
     <div class="entry">
       <div class="entry-top">
-        <span class="entry-title">BSc Computer Science / Informatik — applying</span>
+        <span class="entry-title">BSc Informatik — applying</span>
         <span class="entry-date">Target WS 2027</span>
       </div>
-      <p class="entry-sub">TU München &middot; RWTH Aachen &middot; KIT &middot; TU Berlin</p>
+      <p class="entry-sub">German technical universities</p>
       <p class="entry-body">
-        Preparing via the Studienkolleg / TestAS route where required, alongside independent
-        study in linear algebra, discrete mathematics and analysis.
+        Preparing via the TestAS / Studienkolleg route where the pathway requires it, alongside
+        independent study in linear algebra, discrete mathematics and analysis.
+      </p>
+    </div>
+
+    <div class="entry">
+      <div class="entry-top">
+        <span class="entry-title">MSc computational biology — intended</span>
+        <span class="entry-date">Long range</span>
+      </div>
+      <p class="entry-sub">Switzerland</p>
+      <p class="entry-body">
+        Bioinformatics and systems biology, with the intention of working on the computational
+        side of the Swiss biotechnology and pharmaceutical sector.
       </p>
     </div>
   </section>
 
-  <!-- ======================================================================
-       PROJECTS
-       ====================================================================== -->
   <section class="cv-section">
     <h2>Projects</h2>
 
@@ -257,29 +227,33 @@ ul.bullets strong { color: var(--ink); font-weight: 600; }
         <span class="entry-title">Personal portfolio &amp; CV system</span>
         <span class="entry-date">2026</span>
       </div>
-      <p class="entry-sub">HTML5 · CSS custom properties · Vanilla JavaScript · GitHub Pages</p>
+      <p class="entry-sub">HTML · CSS custom properties · vanilla JavaScript · GitHub Pages</p>
       <ul class="bullets">
-        <li>Built a dependency-free static site with a token-based design system and a
-            print stylesheet that renders this CV directly to A4 PDF.</li>
-        <li>Reduced total page weight from <strong>8.4 MB to roughly 380 KB</strong> by moving
-            to responsive WebP with JPEG fallbacks.</li>
-        <li>Meets <strong>WCAG 2.1 AA</strong> contrast, ships semantic landmarks, a skip link
-            and JSON-LD structured data.</li>
+        <li>Dependency-free static site with a token-based design system, a print stylesheet
+            that renders this CV directly to A4, and structured data for search engines.</li>
+        <li>Wrote a small command interpreter (~200 lines, no libraries) that exposes the same
+            content as a console, and a tween engine for the page's animation.</li>
+        <li>Localised into <strong>eight languages</strong> including right-to-left support for
+            Arabic and Persian, from a single set of translation tables.</li>
+        <li>Reduced total page weight from <strong>8.4 MB to about 70 KB gzipped</strong>; all
+            illustrations are SVG generated by a seeded script in the repository.</li>
+        <li>Meets <strong>WCAG 2.1 AA</strong> contrast in both themes, measured rather than
+            estimated; semantic landmarks, skip link and reduced-motion support throughout.</li>
       </ul>
     </div>
 
     <div class="entry">
       <div class="entry-top">
-        <span class="entry-title">Terminal Network Toolkit</span>
+        <span class="entry-title">Terminal network toolkit</span>
         <span class="entry-date">2025</span>
       </div>
       <p class="entry-sub">Python · asyncio · sockets</p>
       <ul class="bullets">
-        <!-- TODO(Mo): replace this metric with the real measured figure before sending. -->
-        <li>Command-line utility unifying host discovery, port scanning and latency
-            measurement into a single report.</li>
-        <li>Concurrent probing via <code>asyncio</code> cut a /24 subnet scan from roughly
-            90 seconds to under 5 — an <strong>18&times; improvement</strong>.</li>
+        <li>Command-line utility unifying host discovery, port scanning and latency measurement
+            into a single report.</li>
+        <li>Concurrent probing via <code>asyncio</code> in place of sequential scanning.
+            Speedup figure omitted deliberately: it has not yet been benchmarked under
+            controlled conditions.</li>
       </ul>
     </div>
 
@@ -290,67 +264,55 @@ ul.bullets strong { color: var(--ink); font-weight: 600; }
       </div>
       <p class="entry-sub">Python &amp; computer science teaching</p>
       <p class="entry-body">
-        Producing introductory Python and CS material for learners with limited access to
+        Introductory Python and computer science material for learners with limited access to
         technical education in their own language.
       </p>
     </div>
   </section>
 
-  <!-- ======================================================================
-       SKILLS
-       ====================================================================== -->
   <section class="cv-section">
-    <h2>Technical Skills</h2>
+    <h2>Technical skills</h2>
     <dl class="kv">
       <dt>Languages</dt>
       <dd>Python (primary), Bash/Shell, SQL, HTML/CSS/JavaScript, Rust (learning)</dd>
-
-      <dt>Data &amp; ML</dt>
-      <dd>pandas, NumPy, Matplotlib, descriptive statistics, introductory neural networks</dd>
-
-      <dt>Systems &amp; tools</dt>
+      <dt>Data</dt>
+      <dd>pandas, NumPy, Matplotlib, descriptive statistics; Biopython (reading)</dd>
+      <dt>Systems</dt>
       <dd>Linux CLI, Git &amp; GitHub, TCP/IP networking, PowerShell, VS Code</dd>
-
       <dt>Concepts</dt>
       <dd>Data structures &amp; algorithms, object-oriented design, network security fundamentals</dd>
     </dl>
   </section>
 
-  <!-- ======================================================================
-       CERTIFICATIONS
-       ====================================================================== -->
   <section class="cv-section">
     <h2>Certifications</h2>
-    <ul class="cert-cols">
+    <ul class="cols">
       <li>Google Data Analytics Professional — Google / Coursera, 2026</li>
       <li>Comprehensive Git &amp; GitHub — Maktabkhooneh, 2026</li>
-      <li>Python Programming, Full Track — Maktabkhooneh, 2024</li>
+      <li>Python Programming, full track — Maktabkhooneh, 2024</li>
       <li>Computer Networking Fundamentals — Maktabkhooneh, 2025</li>
       <li>Information Security Essentials — Maktabkhooneh, 2025</li>
       <li>Git &amp; GitHub Fundamentals — 365 Data Science, 2024</li>
+      <li>SAT — College Board, 2025</li>
     </ul>
+    <p class="note">Verification links available on request for each certificate.</p>
   </section>
 
-  <!-- ======================================================================
-       LANGUAGES
-       ====================================================================== -->
   <section class="cv-section">
     <h2>Languages</h2>
     <dl class="kv">
       <dt>Persian</dt><dd>Native</dd>
-      <dt>English</dt><dd>C1–C2 — IELTS Academic</dd>
+      <dt>English</dt><dd>C1&ndash;C2 — IELTS Academic</dd>
       <dt>German</dt><dd>B2 — working toward C1</dd>
     </dl>
   </section>
 
-  <!-- ======================================================================
-       ADDITIONAL
-       ====================================================================== -->
   <section class="cv-section">
     <h2>Additional</h2>
     <ul class="bullets">
+      <li>Public repositories at <a href="https://github.com/ybreakless">github.com/ybreakless</a>,
+          including this site's full source.</li>
       <li>Competitive calisthenics; volleyball at club level.</li>
-      <li>Standardised testing: SAT completed.</li>
     </ul>
   </section>
 

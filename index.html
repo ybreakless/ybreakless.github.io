@@ -1,70 +1,83 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en" dir="ltr" data-theme="dark" data-grid="on">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!-- ==========================================================================
-     SEO — every claim below should stay in sync with resume.html
-     ========================================================================== -->
-<title>Mohammad Haj Najafi — Computer Science Applicant &amp; Systems Developer</title>
-<meta name="description" content="Mohammad 'Mo' Haj Najafi — Experimental Sciences graduate (20.0/20.0) applying to computer science programmes at German technical universities. Python, Rust and Linux systems work. Based in Dubai, UAE.">
-<meta name="author" content="Mohammad Haj Najafi">
+<title>ybreakless — Informatik (DE) toward bioinformatics (CH)</title>
+<meta name="description" content="Public record of a computer science applicant: 20.0/20.0 science diploma, German B2, seven certifications, open repositories. Informatik in Germany, then computational biology in Switzerland.">
 <link rel="canonical" href="https://ybreakless.github.io/">
 <meta name="robots" content="index, follow, max-image-preview:large">
 
-<!-- Open Graph / social preview -->
-<meta property="og:type" content="profile">
+<meta property="og:type" content="website">
 <meta property="og:url" content="https://ybreakless.github.io/">
-<meta property="og:title" content="Mohammad Haj Najafi — Computer Science Applicant &amp; Systems Developer">
-<meta property="og:description" content="Experimental Sciences graduate (20.0/20.0) applying to computer science programmes at German technical universities. Python, Rust, Linux.">
-<meta property="og:image" content="https://ybreakless.github.io/assets/images/og-card.jpg">
+<meta property="og:title" content="Computation, pointed at living systems">
+<meta property="og:description" content="Informatik in Germany, then computational biology in Switzerland. A verifiable record: 20.0/20.0 diploma, German B2, seven certifications, open repositories.">
+<meta property="og:image" content="https://ybreakless.github.io/assets/images/og-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Mohammad Haj Najafi — Computer Science Applicant">
-<meta name="twitter:description" content="Experimental Sciences graduate (20.0/20.0) applying to CS programmes at German technical universities.">
-<meta name="twitter:image" content="https://ybreakless.github.io/assets/images/og-card.jpg">
+<meta name="twitter:title" content="Computation, pointed at living systems">
+<meta name="twitter:description" content="Informatik in Germany, then computational biology in Switzerland.">
+<meta name="twitter:image" content="https://ybreakless.github.io/assets/images/og-card.png">
 
-<meta name="theme-color" content="#0b0c0e" media="(prefers-color-scheme: dark)">
-<meta name="theme-color" content="#fbfbfc" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#08090a" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
 
+<link rel="icon" type="image/svg+xml" href="assets/art/favicon.svg">
 <link rel="icon" type="image/png" href="assets/images/favicon.png">
 <link rel="apple-touch-icon" href="assets/images/favicon.png">
 
-<!-- Fonts: preconnect + single request, display=swap to avoid FOIT -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@500;700&display=swap">
 <link rel="stylesheet" href="css/style.css">
 
-<!-- Set theme before first paint so there is no flash of the wrong theme -->
+<!-- Theme, locale, grid and motion are all read back before first paint.
+     Anything restored after paint produces a visible flash of the wrong
+     configuration, which is the one bug a settings panel must not have. -->
 <script>
-  (function () {
-    try {
-      var stored = localStorage.getItem('theme');
-      var prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
-      document.documentElement.setAttribute('data-theme', stored || (prefersLight ? 'light' : 'dark'));
-    } catch (e) { /* private mode — fall back to the dark default */ }
-  })();
+(function () {
+  var d = document.documentElement;
+  // Marks that scripting is available. Every rule that hides something
+  // pending an animation is scoped to this, so with JavaScript off the page
+  // is simply visible rather than a column of blank space.
+  d.setAttribute('data-js', '');
+  var get = function (k) { try { return localStorage.getItem(k); } catch (e) { return null; } };
+  var t = get('theme');
+  d.setAttribute('data-theme',
+    t || (matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark'));
+  if (get('grid') === 'off') d.setAttribute('data-grid', 'off');
+  if (get('motion') === 'off') d.setAttribute('data-motion', 'off');
+  var l = get('lang');
+  if (l && l !== 'en') {
+    d.setAttribute('lang', l);
+    d.setAttribute('dir', (l === 'ar' || l === 'fa') ? 'rtl' : 'ltr');
+  }
+  // The cold-start sequence is a first-visit courtesy, not a toll gate.
+  var seen = true;
+  try { seen = !!sessionStorage.getItem('booted'); } catch (e) { seen = false; }
+  if (!seen && !matchMedia('(prefers-reduced-motion: reduce)').matches
+      && get('motion') !== 'off') {
+    d.setAttribute('data-booting', '');
+    // Failsafe: if the deferred scripts never arrive, the overlay must not
+    // become a permanent wall in front of the page.
+    setTimeout(function () { d.removeAttribute('data-booting'); }, 4000);
+  }
+})();
 </script>
 
-<!-- Structured data: helps search engines and any recruiter tooling parse this -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Person",
   "name": "Mohammad Haj Najafi",
-  "alternateName": "Mo Haj Najafi",
+  "alternateName": "ybreakless",
   "url": "https://ybreakless.github.io/",
-  "image": "https://ybreakless.github.io/assets/images/profile.jpg",
-  "email": "mailto:ybreakless@gmail.com",
-  "jobTitle": "Computer Science Applicant & Systems Developer",
-  "description": "Experimental Sciences graduate applying to computer science programmes at German technical universities. Works in Python, Rust and Linux systems tooling.",
-  "address": { "@type": "PostalAddress", "addressLocality": "Dubai", "addressCountry": "AE" },
-  "knowsLanguage": ["en", "de", "fa"],
-  "knowsAbout": ["Python", "Rust", "Linux", "Data Analysis", "Machine Learning", "Git"],
+  "jobTitle": "Computer science applicant",
+  "description": "Science graduate applying for Informatik at German technical universities, working toward computational biology and biotechnology in Switzerland.",
+  "knowsLanguage": ["fa", "en", "de"],
+  "knowsAbout": ["Python", "Rust", "Linux", "Bioinformatics", "Data analysis", "Git"],
   "sameAs": [
     "https://github.com/ybreakless",
     "https://www.linkedin.com/in/mohajnajafi/",
@@ -76,616 +89,612 @@
 </head>
 
 <body>
-<a class="skip-link" href="#main">Skip to content</a>
+<a class="skip-link" href="#main" data-i18n="a11y.skip">Skip to content</a>
 
 <!-- ==========================================================================
-     NAVIGATION
+     COLD START
+     Printed by js/main.js from a real list of what the page is doing. It
+     is skippable with any key, runs once per session, and never appears
+     for a visitor who has asked for reduced motion.
+     ========================================================================== -->
+<div class="boot" id="boot" aria-hidden="true">
+  <div class="boot-log" id="boot-log"></div>
+  <div class="boot-meter"><i id="boot-meter"></i></div>
+  <button class="boot-skip" type="button" id="boot-skip" tabindex="-1" data-i18n="boot.skip">Skip · press any key</button>
+</div>
+
+<!-- ==========================================================================
+     NAV
      ========================================================================== -->
 <header class="nav" id="nav">
-  <div class="container nav-inner">
+  <div class="wrap nav-in">
     <a class="brand" href="#top">
-      <span class="brand-mark" aria-hidden="true">MH</span>
-      <span>Mohammad Haj Najafi</span>
+      <span class="brand-mark" aria-hidden="true">Y</span>
+      <span>ybreakless</span>
+      <span class="brand-sub" aria-hidden="true">/ DE&rarr;CH</span>
     </a>
 
-    <nav id="nav-links" class="nav-links" aria-label="Section navigation">
-      <a href="#about">About</a>
-      <a href="#academics">Academics</a>
-      <a href="#skills">Skills</a>
-      <a href="#work">Work</a>
-      <a href="#contact">Contact</a>
+    <nav class="nav-links" id="nav-links" aria-label="Sections">
+      <a href="#trajectory" data-i18n="nav.trajectory">Trajectory</a>
+      <a href="#record" data-i18n="nav.record">Record</a>
+      <a href="#capability" data-i18n="nav.capability">Capability</a>
+      <a href="#work" data-i18n="nav.work">Work</a>
+      <a href="#console" data-i18n="nav.console">Console</a>
+      <a href="#contact" data-i18n="nav.contact">Contact</a>
     </nav>
 
-    <div class="nav-actions">
-      <button class="icon-btn" id="theme-toggle" type="button"
-              aria-label="Switch between light and dark theme">
-        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
-             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+    <div class="nav-tools">
+      <button class="ibtn" id="lang-btn" type="button" data-i18n-attr="aria-label:nav.language"
+              aria-label="Language">
+        <span id="lang-code">EN</span>
+      </button>
+      <button class="ibtn" id="theme-btn" type="button" data-i18n-attr="aria-label:nav.theme"
+              aria-label="Theme">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
+             stroke-linecap="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="4.2"/>
+          <path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.2 5.2l1.4 1.4M17.4 17.4l1.4 1.4M18.8 5.2l-1.4 1.4M6.6 17.4l-1.4 1.4"/>
         </svg>
       </button>
-      <a class="btn btn-secondary" href="resume.html">CV</a>
-      <button class="icon-btn nav-toggle" id="nav-toggle" type="button"
-              aria-label="Open navigation menu" aria-expanded="false" aria-controls="nav-links">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
+      <button class="ibtn" id="cfg-btn" type="button" aria-expanded="false" aria-controls="drawer"
+              data-i18n-attr="aria-label:nav.config" aria-label="Configure">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
              stroke-linecap="round" aria-hidden="true">
-          <path d="M3 6h18M3 12h18M3 18h18"/>
+          <path d="M4 7h10M18 7h2M4 17h4M12 17h8"/>
+          <circle cx="16" cy="7" r="2.1"/><circle cx="10" cy="17" r="2.1"/>
         </svg>
+      </button>
+      <button class="ibtn nav-toggle" id="nav-toggle" type="button" aria-expanded="false"
+              aria-controls="nav-links" data-i18n-attr="aria-label:nav.menu" aria-label="Menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+             stroke-linecap="round" aria-hidden="true"><path d="M3 7h18M3 12h18M3 17h18"/></svg>
       </button>
     </div>
   </div>
 </header>
 
 <main id="main">
-<div id="top"></div>
+<span id="top"></span>
 
 <!-- ==========================================================================
-     1. HERO
-     The single most important 400px on the site. A reader must learn
-     who you are, what you want, and what proves it — without scrolling.
+     HERO
      ========================================================================== -->
-<section class="section hero container">
-  <div class="hero-grid">
+<section class="section hero wrap">
+  <p class="hero-status" data-i18n="hero.status">Applying — Informatik, Germany, WS 2027</p>
+
+  <h1 class="split" id="hero-h1">
+    <span data-i18n="hero.h1a">Computation, pointed at</span>
+    <span class="thin" data-i18n="hero.h1b">living systems.</span>
+  </h1>
+
+  <div class="hero-body">
     <div>
-      <p class="status-pill">
-        <span class="status-dot" aria-hidden="true"></span>
-        Applying for CS admission — Winter Semester 2027, Germany
+      <p class="lead" data-reveal data-i18n="hero.lead">
+        A science diploma at the top of its scale, then a hard turn into systems
+        programming. Germany first, because its universities make you earn the
+        mathematics. Switzerland after, because that is where computation and
+        biology are actually put to work.
       </p>
 
-      <h1>
-        I build systems software<br>
-        and I&rsquo;m headed to <span class="accent">Germany</span> to study it properly.
-      </h1>
-
-      <p class="hero-sub">
-        Experimental Sciences graduate with a <strong>20.0/20.0</strong> average, now writing
-        Python and Rust tooling while I prepare for computer science admission at TUM,
-        RWTH Aachen and KIT. Everything below is verifiable.
-      </p>
-
-      <div class="hero-actions">
-        <a class="btn" href="resume.html">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
+      <div class="hero-actions" data-reveal style="--delay:80ms">
+        <a class="btn" href="#console">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-            <path d="M14 2v6h6M16 13H8M16 17H8"/>
+            <path d="m5 8 4 4-4 4M12 16h7"/>
           </svg>
-          View full CV
+          <span data-i18n="hero.cta1">Open the console</span>
         </a>
-        <a class="btn btn-secondary" href="mailto:ybreakless@gmail.com">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
-               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/>
-          </svg>
-          Email me
-        </a>
-        <a class="btn btn-secondary" href="https://github.com/ybreakless" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.6 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .3z"/>
-          </svg>
-          GitHub
-        </a>
+        <a class="btn btn-ghost" href="resume.html" data-i18n="hero.cta2">Full CV</a>
+        <a class="btn btn-ghost" href="https://github.com/ybreakless" rel="noopener"
+           data-i18n="hero.cta3">Repositories</a>
       </div>
-
-      <p class="hero-meta">
-        <span>Dubai, UAE — open to relocation</span>
-        <span>EN C1&ndash;C2 &middot; DE B2 &middot; FA native</span>
-      </p>
     </div>
 
-    <figure class="hero-portrait">
-      <picture>
-        <source srcset="assets/images/profile.webp" type="image/webp">
-        <img src="assets/images/profile.jpg" width="640" height="640"
-             alt="Portrait of Mohammad Haj Najafi" fetchpriority="high" decoding="async">
-      </picture>
+    <figure class="hero-art" data-reveal style="--delay:160ms">
+      <span class="art" data-art="lattice" style="aspect-ratio:720/420" role="img"
+            data-i18n-attr="aria-label:hero.artalt"
+            aria-label="A self-avoiding walk on a lattice with its non-local contacts marked"></span>
+      <figcaption data-i18n="hero.caption">
+        Self-avoiding walk on a lattice — the toy model of protein folding, and
+        an ordinary graph traversal. Both readings are the point.
+      </figcaption>
     </figure>
   </div>
 
-  <!-- The 30-second scan. Four numbers, no prose. -->
-  <div class="proof-bar" data-reveal>
-    <div class="proof-item">
-      <span class="proof-value">20.0<span class="subtle" style="font-size:0.6em">/20</span></span>
-      <span class="proof-label">Diploma average</span>
+  <!-- The thirty-second scan. Every number here is checkable. -->
+  <div class="metrics" data-reveal>
+    <div class="metric">
+      <span class="metric-v"><span class="count" data-to="20" data-dec="1">20.0</span><small>/20</small></span>
+      <span class="metric-k" data-i18n="m.diploma">Diploma average</span>
     </div>
-    <div class="proof-item">
-      <span class="proof-value">≈ 1.0</span>
-      <span class="proof-label">German equivalent</span>
+    <div class="metric">
+      <span class="metric-v">&#8776;&#8202;<span class="count" data-to="1" data-dec="1">1.0</span></span>
+      <span class="metric-k" data-i18n="m.german">German scale, estimated</span>
     </div>
-    <div class="proof-item">
-      <span class="proof-value">B2</span>
-      <span class="proof-label">German (CEFR)</span>
+    <div class="metric">
+      <span class="metric-v">B2</span>
+      <span class="metric-k" data-i18n="m.de">German, CEFR</span>
     </div>
-    <div class="proof-item">
-      <span class="proof-value">7</span>
-      <span class="proof-label">Certifications</span>
+    <div class="metric">
+      <span class="metric-v"><span class="count" data-to="7">7</span></span>
+      <span class="metric-k" data-i18n="m.certs">Certifications</span>
     </div>
-  </div>
-</section>
-
-<!-- ==========================================================================
-     2. ABOUT
-     ========================================================================== -->
-<section class="section container" id="about">
-  <div class="section-head">
-    <div>
-      <p class="eyebrow">About</p>
-      <h2>Short version</h2>
-    </div>
-  </div>
-
-  <div class="prose" data-reveal>
-    <p>
-      I finished my Experimental Sciences diploma with a <strong>20.0/20.0 average</strong> and
-      immediately went looking for the part of science that lets you build things. That turned out
-      to be systems programming. I now spend most of my time in a Linux terminal writing Python
-      and learning Rust, because I want to understand machines at the level where the abstractions
-      stop hiding things.
-    </p>
-    <p>
-      My goal is specific: a <strong>BSc in Computer Science at a German technical university</strong>
-      — TUM, RWTH Aachen or KIT. I chose Germany deliberately, for the depth of its engineering
-      tradition and the fact that its universities expect you to actually understand the mathematics.
-      I&rsquo;ve been learning German for that reason and currently sit at B2.
-    </p>
-    <p>
-      Outside of that I train calisthenics and play competitive volleyball. Both taught me the
-      same thing programming did: you get good at something by doing the boring repetitions long
-      after the novelty wears off.
-    </p>
-  </div>
-</section>
-
-<!-- ==========================================================================
-     3. ACADEMICS
-     ========================================================================== -->
-<section class="section container" id="academics">
-  <div class="section-head">
-    <div>
-      <p class="eyebrow">Academics</p>
-      <h2>Record &amp; qualifications</h2>
-    </div>
-    <a class="link-underline" href="resume.html">Full CV &rarr;</a>
-  </div>
-
-  <div class="timeline" data-reveal>
-    <article class="tl-item">
-      <div class="tl-date">2026</div>
-      <div>
-        <h3 class="tl-title">Experimental Sciences Diploma — Highest Honours</h3>
-        <p class="tl-org">Secondary education, Iranian national curriculum</p>
-        <p class="tl-body">
-          Final average <strong>20.0 / 20.0</strong>, the maximum on the Iranian grading scale —
-          approximately <strong>1.0</strong> on the German scale, subject to formal evaluation
-          by <a class="link-underline" href="https://anabin.kmk.org/" rel="noopener">anabin</a> /
-          uni-assist. Core coursework in mathematics, physics, chemistry and biology.
-        </p>
-      </div>
-    </article>
-
-    <article class="tl-item">
-      <div class="tl-date">2025 &ndash; 2026</div>
-      <div>
-        <h3 class="tl-title">Standardised testing &amp; language certification</h3>
-        <p class="tl-org">SAT · IELTS Academic · Goethe-Institut track</p>
-        <p class="tl-body">
-          SAT completed. IELTS Academic taken (C1&ndash;C2 range). German at <strong>B2</strong>,
-          working toward the C1 level most German-taught CS programmes require.
-        </p>
-        <div class="chip-row" style="margin-top:0.9rem">
-          <span class="chip">English — C1&ndash;C2</span>
-          <span class="chip">German — B2</span>
-          <span class="chip">Persian — Native</span>
-        </div>
-      </div>
-    </article>
-
-    <article class="tl-item">
-      <div class="tl-date">Target</div>
-      <div>
-        <h3 class="tl-title">BSc Computer Science / Informatik</h3>
-        <p class="tl-org">TU München · RWTH Aachen · KIT · TU Berlin</p>
-        <p class="tl-body">
-          Applying for Winter Semester 2027 entry. Preparing through the
-          <em>Studienkolleg</em> / TestAS route where required, and building the mathematics
-          foundation those programmes assume from day one.
-        </p>
-      </div>
-    </article>
-  </div>
-
-  <h3 style="margin:3rem 0 1.25rem">Certifications</h3>
-  <div class="cert-grid" data-reveal>
-    <!-- TODO: link each certificate to its public verification URL.
-         An unlinked certificate is a claim; a linked one is evidence. -->
-    <div class="cert">
-      <span class="cert-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m20 6-11 11-5-5"/></svg></span>
-      <span><strong class="cert-name">Google Data Analytics Professional</strong>
-      <span class="cert-meta">Google / Coursera · 2026</span></span>
-    </div>
-    <div class="cert">
-      <span class="cert-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m20 6-11 11-5-5"/></svg></span>
-      <span><strong class="cert-name">Comprehensive Git &amp; GitHub</strong>
-      <span class="cert-meta">Maktabkhooneh · 2026</span></span>
-    </div>
-    <div class="cert">
-      <span class="cert-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m20 6-11 11-5-5"/></svg></span>
-      <span><strong class="cert-name">Python Programming — Full Track</strong>
-      <span class="cert-meta">Maktabkhooneh · 2024</span></span>
-    </div>
-    <div class="cert">
-      <span class="cert-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m20 6-11 11-5-5"/></svg></span>
-      <span><strong class="cert-name">Computer Networking Fundamentals</strong>
-      <span class="cert-meta">Maktabkhooneh · 2025</span></span>
-    </div>
-    <div class="cert">
-      <span class="cert-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m20 6-11 11-5-5"/></svg></span>
-      <span><strong class="cert-name">Git &amp; GitHub Fundamentals</strong>
-      <span class="cert-meta">365 Data Science · 2024</span></span>
-    </div>
-    <div class="cert">
-      <span class="cert-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m20 6-11 11-5-5"/></svg></span>
-      <span><strong class="cert-name">Information Security Essentials</strong>
-      <span class="cert-meta">Maktabkhooneh · 2025</span></span>
+    <div class="metric">
+      <span class="metric-v"><span class="count" data-to="8">8</span></span>
+      <span class="metric-k" data-i18n="m.locales">Locales on this page</span>
     </div>
   </div>
 </section>
 
 <!-- ==========================================================================
-     4. SKILLS
-     Proficiency labels are deliberately conservative and each one names the
-     evidence. Overclaiming is the fastest way to lose a technical reader.
+     01  TRAJECTORY
      ========================================================================== -->
-<section class="section container" id="skills">
-  <div class="section-head">
-    <div>
-      <p class="eyebrow">Skills</p>
-      <h2>What I actually work in</h2>
-    </div>
-    <a class="link-underline" href="https://github.com/ybreakless" rel="noopener">See the code &rarr;</a>
-  </div>
-
-  <div class="grid grid-3">
-    <div class="card" data-reveal>
-      <h3 class="card-title">
-        <span class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m16 18 6-6-6-6M8 6l-6 6 6 6"/></svg></span>
-        Languages
-      </h3>
-      <div class="skill-row"><span class="skill-name">Python</span><span class="skill-note">Primary · 3 yrs</span></div>
-      <div class="skill-row"><span class="skill-name">Bash / Shell</span><span class="skill-note">Daily driver</span></div>
-      <div class="skill-row"><span class="skill-name">Rust</span><span class="skill-note">Learning · ownership &amp; traits</span></div>
-      <div class="skill-row"><span class="skill-name">HTML / CSS / JS</span><span class="skill-note">This site, hand-written</span></div>
-      <div class="skill-row"><span class="skill-name">SQL</span><span class="skill-note">Joins, aggregation</span></div>
-    </div>
-
-    <div class="card" data-reveal style="--reveal-delay:90ms">
-      <h3 class="card-title">
-        <span class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18M7 16l4-6 4 3 5-8"/></svg></span>
-        Data &amp; ML
-      </h3>
-      <div class="skill-row"><span class="skill-name">pandas / NumPy</span><span class="skill-note">Cleaning, aggregation</span></div>
-      <div class="skill-row"><span class="skill-name">Matplotlib</span><span class="skill-note">Exploratory plots</span></div>
-      <div class="skill-row"><span class="skill-name">Statistics</span><span class="skill-note">Google Data Analytics</span></div>
-      <div class="skill-row"><span class="skill-name">Neural networks</span><span class="skill-note">Coursework level</span></div>
-    </div>
-
-    <div class="card" data-reveal style="--reveal-delay:180ms">
-      <h3 class="card-title">
-        <span class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></span>
-        Tools &amp; systems
-      </h3>
-      <div class="skill-row"><span class="skill-name">Linux CLI</span><span class="skill-note">Primary environment</span></div>
-      <div class="skill-row"><span class="skill-name">Git &amp; GitHub</span><span class="skill-note">Branching, PR workflow</span></div>
-      <div class="skill-row"><span class="skill-name">TCP/IP networking</span><span class="skill-note">Certified fundamentals</span></div>
-      <div class="skill-row"><span class="skill-name">PowerShell</span><span class="skill-note">Windows administration</span></div>
-    </div>
-  </div>
-</section>
-
-<!-- ==========================================================================
-     5. WORK
-     Two clearly separated tiers. Shipped work first, ideas second, labelled
-     honestly. Mixing the two is the single biggest credibility risk on a
-     portfolio at this career stage.
-     ========================================================================== -->
-<section class="section container" id="work">
-  <div class="section-head">
-    <div>
-      <p class="eyebrow">Work</p>
-      <h2>Shipped</h2>
-    </div>
-    <a class="link-underline" href="https://github.com/ybreakless" rel="noopener">All repositories &rarr;</a>
-  </div>
-
-  <div class="project-list">
-
-    <!-- ---------------------------------------------------------------
-         PROJECT 1 — this website. It is real, it is live, and it is the
-         only thing here a reader can inspect line by line. Lead with it.
-         --------------------------------------------------------------- -->
-    <article class="project" data-reveal>
-      <div class="project-media">
-        <picture>
-          <source srcset="assets/images/project1.webp" type="image/webp">
-          <img src="assets/images/project1.jpg" width="1200" height="896" loading="lazy" decoding="async"
-               alt="Screenshot of the portfolio site interface">
-        </picture>
-      </div>
-      <div class="project-body">
-        <div class="project-header">
-          <div>
-            <p class="project-kicker">Live · Open source</p>
-            <h3>Personal portfolio &amp; CV system</h3>
-          </div>
-          <span class="chip chip-accent">Shipped</span>
-        </div>
-
-        <div class="psr">
-          <div class="psr-item">
-            <span class="psr-key">Problem</span>
-            <span class="psr-val">Applications to four German universities each needed the same
-              credentials in a different format, kept manually in sync.</span>
-          </div>
-          <div class="psr-item">
-            <span class="psr-key">Approach</span>
-            <span class="psr-val">Built a static site from scratch — no framework, no build step —
-              with a token-based CSS design system, a print stylesheet that renders the CV straight
-              to PDF, and JSON-LD so the credentials are machine-readable.</span>
-          </div>
-          <div class="psr-item">
-            <span class="psr-key">Result</span>
-            <span class="psr-val"><strong>~380&nbsp;KB total page weight</strong> (down from 8.4&nbsp;MB),
-              <strong>zero dependencies</strong>, WCAG&nbsp;AA contrast throughout, and one source of
-              truth for every application.</span>
-          </div>
-        </div>
-
-        <div class="project-footer">
-          <div class="chip-row">
-            <span class="chip">HTML5</span>
-            <span class="chip">CSS custom properties</span>
-            <span class="chip">Vanilla JS</span>
-            <span class="chip">GitHub Pages</span>
-          </div>
-          <a class="link-underline" href="https://github.com/ybreakless/ybreakless.github.io" rel="noopener">Source &rarr;</a>
-        </div>
-      </div>
-    </article>
-
-    <!-- ---------------------------------------------------------------
-         PROJECT 2 — TODO(Mo): replace every metric below with real
-         numbers once the toolkit is pushed. Placeholder metrics are worse
-         than none: a reviewer who checks will stop trusting the whole page.
-         --------------------------------------------------------------- -->
-    <article class="project" data-reveal>
-      <div class="project-media">
-        <picture>
-          <source srcset="assets/images/project2.webp" type="image/webp">
-          <img src="assets/images/project2.jpg" width="1408" height="768" loading="lazy" decoding="async"
-               alt="Terminal output from the network toolkit">
-        </picture>
-      </div>
-      <div class="project-body">
-        <div class="project-header">
-          <div>
-            <p class="project-kicker">Python · CLI</p>
-            <h3>Terminal Network Toolkit</h3>
-          </div>
-          <span class="chip chip-accent">Shipped</span>
-        </div>
-
-        <div class="psr">
-          <div class="psr-item">
-            <span class="psr-key">Problem</span>
-            <span class="psr-val">Diagnosing a home network meant running four separate utilities
-              and manually correlating their output.</span>
-          </div>
-          <div class="psr-item">
-            <span class="psr-key">Approach</span>
-            <span class="psr-val">A single Python CLI that performs host discovery, port scanning
-              and latency measurement concurrently, then prints one unified report. Built on the
-              standard library plus <code class="mono">asyncio</code> for parallel probes.</span>
-          </div>
-          <div class="psr-item">
-            <span class="psr-key">Result</span>
-            <span class="psr-val">Scans a /24 subnet in <strong>under 5 seconds</strong> versus
-              roughly 90 seconds sequentially — an <strong>18&times; speedup</strong> from moving
-              to concurrent probes.</span>
-          </div>
-        </div>
-
-        <div class="project-footer">
-          <div class="chip-row">
-            <span class="chip">Python</span>
-            <span class="chip">asyncio</span>
-            <span class="chip">Sockets</span>
-            <span class="chip">argparse</span>
-          </div>
-          <a class="link-underline" href="https://github.com/ybreakless" rel="noopener">Source &rarr;</a>
-        </div>
-      </div>
-    </article>
-
-  </div>
-
-  <!-- ------------------------------------------------------------------
-       Concepts, kept visually and semantically separate from shipped work.
-       For a university reader this section is an asset — it shows research
-       direction — provided nobody can mistake it for a finished product.
-       ------------------------------------------------------------------ -->
-  <div class="section-head" style="margin-top:4.5rem">
-    <div>
-      <p class="eyebrow">Directions</p>
-      <h2>Concepts I want to build</h2>
+<section class="section wrap" id="trajectory">
+  <div class="sec-head">
+    <p class="sec-index">01</p>
+    <div class="sec-title">
+      <h2 data-i18n="traj.h2">Four stages, one direction</h2>
+      <p class="sec-note" data-i18n="traj.note">Stage 02 of 04</p>
     </div>
   </div>
 
-  <p class="lead" style="margin-bottom:2rem" data-reveal>
-    None of these exist yet. They are the problems I want to spend a degree learning
-    enough to attack properly.
+  <p class="lead" data-reveal style="margin-bottom:var(--s-6)" data-i18n="traj.lead">
+    Informatik is not a detour from the science diploma; it is the instrument.
+    Sequence alignment, structure prediction and population genetics are all
+    algorithms problems wearing a lab coat. Germany teaches the algorithms.
+    Switzerland runs the labs.
   </p>
 
-  <div class="grid grid-2">
-    <div class="card" data-reveal>
-      <div class="project-header" style="margin-bottom:1rem">
-        <h3>Bio Twin</h3>
-        <span class="chip chip-warm">Concept</span>
-      </div>
-      <p class="muted" style="font-size:var(--step--1)">
-        Continuous biometric monitoring from a single hand-contact sensor, so the gap between
-        clinic visits stops being a blind spot. The interesting problem is signal quality: how
-        much can you actually infer from palm-contact photoplethysmography before the noise
-        floor wins? That is a signal-processing question I don&rsquo;t yet have the mathematics for.
-      </p>
-      <div class="chip-row" style="margin-top:1rem">
-        <span class="chip">Signal processing</span>
-        <span class="chip">Embedded</span>
-        <span class="chip">Health tech</span>
-      </div>
-    </div>
+  <div class="traj" data-reveal>
+    <article class="stage" data-state="done">
+      <p class="stage-top"><span class="stage-dot" aria-hidden="true"></span><span data-i18n="traj.s1.k">Complete</span></p>
+      <h3 data-i18n="traj.s1.h">Science, at the top of the scale</h3>
+      <p data-i18n="traj.s1.p">Experimental Sciences diploma: mathematics, physics, chemistry, biology. A 20.0/20.0 average and a working reason to care about living systems.</p>
+      <p class="stage-where" data-i18n="traj.s1.w">2026</p>
+    </article>
 
-    <div class="card" data-reveal style="--reveal-delay:90ms">
-      <div class="project-header" style="margin-bottom:1rem">
-        <h3>Moython</h3>
-        <span class="chip chip-warm">In progress</span>
-      </div>
-      <p class="muted" style="font-size:var(--step--1)">
-        A Python and computer-science education channel aimed at learners in regions where
-        good technical material in their own language is scarce. I learned most of what I know
-        from free resources; this is the part I can pay back before I&rsquo;m qualified to do
-        anything else.
-      </p>
-      <div class="chip-row" style="margin-top:1rem">
-        <span class="chip">Education</span>
-        <span class="chip">Python</span>
-        <span class="chip">Community</span>
-      </div>
-    </div>
+    <article class="stage" data-state="now">
+      <p class="stage-top"><span class="stage-dot" aria-hidden="true"></span><span data-i18n="traj.s2.k">Current</span></p>
+      <h3 data-i18n="traj.s2.h">BSc Informatik</h3>
+      <p data-i18n="traj.s2.p">Applying to German technical universities for Winter Semester 2027, via TestAS and Studienkolleg where the pathway requires it. German at B2, moving to C1.</p>
+      <p class="stage-where" data-i18n="traj.s2.w">Germany &#183; WS 2027</p>
+    </article>
 
-    <div class="card" data-reveal style="--reveal-delay:180ms">
-      <div class="project-header" style="margin-bottom:1rem">
-        <h3>Homa</h3>
-        <span class="chip chip-warm">Concept</span>
-      </div>
-      <p class="muted" style="font-size:var(--step--1)">
-        Regional AI compute infrastructure for markets currently dependent on distant
-        hyperscalers. The constraint that interests me is latency and data residency — where
-        inference has to physically happen, and what that costs. Distributed-systems territory,
-        which is exactly what I want to study.
-      </p>
-      <div class="chip-row" style="margin-top:1rem">
-        <span class="chip">Distributed systems</span>
-        <span class="chip">Infrastructure</span>
-      </div>
-    </div>
+    <article class="stage">
+      <p class="stage-top"><span class="stage-dot" aria-hidden="true"></span><span data-i18n="traj.s3.k">Planned</span></p>
+      <h3 data-i18n="traj.s3.h">MSc Computational Biology</h3>
+      <p data-i18n="traj.s3.p">Bioinformatics and systems biology at a Swiss institution. The specific target is the algorithmic side: sequence analysis, structure, and the statistics that keep both honest.</p>
+      <p class="stage-where" data-i18n="traj.s3.w">Switzerland</p>
+    </article>
 
-    <div class="card" data-reveal style="--reveal-delay:270ms">
-      <div class="project-header" style="margin-bottom:1rem">
-        <h3>Beyond the screen</h3>
-        <span class="chip">Personal</span>
+    <article class="stage">
+      <p class="stage-top"><span class="stage-dot" aria-hidden="true"></span><span data-i18n="traj.s4.k">Direction</span></p>
+      <h3 data-i18n="traj.s4.h">Biotechnology, on the compute side</h3>
+      <p data-i18n="traj.s4.p">The Basel&#8211;Z&uuml;rich corridor is where pharmaceutical research and computational methods already share a building. That is the room I want to be useful in.</p>
+      <p class="stage-where" data-i18n="traj.s4.w">Long range</p>
+    </article>
+  </div>
+
+  <figure class="figure" data-reveal>
+    <span class="art" data-art="trajectory" style="aspect-ratio:720/290" role="img"
+          data-i18n-attr="aria-label:traj.artalt"
+          aria-label="Four stages on a rail, with a rising workload profile beneath"></span>
+    <figcaption data-i18n="traj.caption">
+      The bars are not decoration: each stage costs more than the one before it,
+      and stage 02 is where the entire plan is currently load-bearing.
+    </figcaption>
+  </figure>
+</section>
+
+<!-- ==========================================================================
+     02  RECORD
+     ========================================================================== -->
+<section class="section wrap" id="record">
+  <div class="sec-head">
+    <p class="sec-index">02</p>
+    <div class="sec-title">
+      <h2 data-i18n="rec.h2">The record</h2>
+      <a class="arrow" href="resume.html" data-i18n="rec.cv">Full CV</a>
+    </div>
+  </div>
+
+  <div class="record" data-reveal>
+    <article class="rec">
+      <p class="rec-when">2026</p>
+      <div class="rec-what">
+        <h3 data-i18n="rec.r1.h">Experimental Sciences diploma, highest honours</h3>
+        <p data-i18n="rec.r1.p">The maximum attainable average on the Iranian scale. Roughly 1.0 in German terms, pending formal anabin / uni-assist evaluation &#8212; the estimate is mine, the conversion is theirs.</p>
       </div>
-      <p class="muted" style="font-size:var(--step--1)">
-        Competitive calisthenics and volleyball. I mention them because they are the same skill
-        as programming under a different name: showing up for the unglamorous repetitions,
-        and staying calm when a situation stops going to plan.
-      </p>
-      <div class="chip-row" style="margin-top:1rem">
-        <span class="chip">Calisthenics</span>
-        <span class="chip">Volleyball</span>
+      <p class="rec-score">20.0<span class="subtle">/20</span></p>
+    </article>
+
+    <article class="rec">
+      <p class="rec-when">2025&#8211;2026</p>
+      <div class="rec-what">
+        <h3 data-i18n="rec.r2.h">Languages, certified and in progress</h3>
+        <p data-i18n="rec.r2.p">Persian native. English at C1&#8211;C2 by IELTS Academic. German at B2 and working toward the C1 that German-taught Informatik programmes assume.</p>
+        <div class="chips">
+          <span class="chip">FA &#183; <span data-i18n="rec.native">native</span></span>
+          <span class="chip">EN &#183; C1&#8211;C2</span>
+          <span class="chip chip-solid">DE &#183; B2</span>
+        </div>
       </div>
+      <p class="rec-score">3</p>
+    </article>
+
+    <article class="rec">
+      <p class="rec-when">2024&#8211;2026</p>
+      <div class="rec-what">
+        <h3 data-i18n="rec.r3.h">Seven completed certifications</h3>
+        <p data-i18n="rec.r3.p">Data analytics, Python, version control, networking and security fundamentals. Listed in full below, because a count without names is not evidence.</p>
+      </div>
+      <p class="rec-score">7</p>
+    </article>
+
+    <article class="rec">
+      <p class="rec-when">2025&#8211;</p>
+      <div class="rec-what">
+        <h3 data-i18n="rec.r4.h">Public repositories</h3>
+        <p data-i18n="rec.r4.p">Everything is on GitHub, including this site and the German-exam preparation repository. Small, but real and inspectable, which is the whole reason it is here.</p>
+        <div class="chips">
+          <a class="chip" href="https://github.com/ybreakless/ybreakless.github.io" rel="noopener">ybreakless.github.io</a>
+          <a class="chip" href="https://github.com/ybreakless/GermanRoadMap" rel="noopener">GermanRoadMap</a>
+          <a class="chip" href="https://github.com/ybreakless/Image2dot" rel="noopener">Image2dot</a>
+        </div>
+      </div>
+      <p class="rec-score">7</p>
+    </article>
+  </div>
+
+  <div class="certs" data-reveal>
+    <div class="cert"><span class="cert-n">01</span><span><b class="cert-name">Google Data Analytics Professional</b><span class="cert-src">Google / Coursera &#183; 2026</span></span></div>
+    <div class="cert"><span class="cert-n">02</span><span><b class="cert-name">Comprehensive Git &amp; GitHub</b><span class="cert-src">Maktabkhooneh &#183; 2026</span></span></div>
+    <div class="cert"><span class="cert-n">03</span><span><b class="cert-name">Python Programming, full track</b><span class="cert-src">Maktabkhooneh &#183; 2024</span></span></div>
+    <div class="cert"><span class="cert-n">04</span><span><b class="cert-name">Computer Networking Fundamentals</b><span class="cert-src">Maktabkhooneh &#183; 2025</span></span></div>
+    <div class="cert"><span class="cert-n">05</span><span><b class="cert-name">Information Security Essentials</b><span class="cert-src">Maktabkhooneh &#183; 2025</span></span></div>
+    <div class="cert"><span class="cert-n">06</span><span><b class="cert-name">Git &amp; GitHub Fundamentals</b><span class="cert-src">365 Data Science &#183; 2024</span></span></div>
+    <div class="cert"><span class="cert-n">07</span><span><b class="cert-name">SAT, completed</b><span class="cert-src">College Board &#183; 2025</span></span></div>
+    <div class="cert"><span class="cert-n subtle">&#8212;</span><span class="subtle"><b class="cert-name" data-i18n="rec.verify">Verification links pending</b><span class="cert-src" data-i18n="rec.verifysub">Until each is linked, these are claims</span></span></div>
+  </div>
+  <!-- TODO: each of the six course certificates has a public verification URL.
+       Until they are linked they are claims, not evidence. Link them. -->
+</section>
+
+<!-- ==========================================================================
+     03  CAPABILITY
+     ========================================================================== -->
+<section class="section wrap" id="capability">
+  <div class="sec-head">
+    <p class="sec-index">03</p>
+    <div class="sec-title">
+      <h2 data-i18n="cap.h2">What I can actually do</h2>
+      <p class="sec-note" data-i18n="cap.note">Claims sized to evidence</p>
+    </div>
+  </div>
+
+  <div class="grid cols-3" data-reveal>
+    <div class="cap">
+      <h3 data-i18n="cap.c1">Languages</h3>
+      <p class="cap-row"><b>Python</b><span data-i18n="cap.python">Primary &#183; 3 years</span></p>
+      <p class="cap-row"><b>Bash</b><span data-i18n="cap.bash">Daily driver</span></p>
+      <p class="cap-row"><b>SQL</b><span data-i18n="cap.sql">Joins, aggregation</span></p>
+      <p class="cap-row"><b>HTML / CSS / JS</b><span data-i18n="cap.web">This site, by hand</span></p>
+      <p class="cap-row"><b>Rust</b><span data-i18n="cap.rust">Learning &#183; ownership</span></p>
+    </div>
+    <div class="cap">
+      <h3 data-i18n="cap.c2">Data</h3>
+      <p class="cap-row"><b>pandas / NumPy</b><span data-i18n="cap.pandas">Cleaning, aggregation</span></p>
+      <p class="cap-row"><b>Matplotlib</b><span data-i18n="cap.plots">Exploratory plots</span></p>
+      <p class="cap-row"><b>Statistics</b><span data-i18n="cap.stats">Certified coursework</span></p>
+      <p class="cap-row"><b>Biopython</b><span data-i18n="cap.biopy">Reading, not shipping</span></p>
+    </div>
+    <div class="cap">
+      <h3 data-i18n="cap.c3">Systems</h3>
+      <p class="cap-row"><b>Linux</b><span data-i18n="cap.linux">Primary environment</span></p>
+      <p class="cap-row"><b>Git</b><span data-i18n="cap.git">Branches, PR workflow</span></p>
+      <p class="cap-row"><b>TCP/IP</b><span data-i18n="cap.net">Certified fundamentals</span></p>
+      <p class="cap-row"><b>PowerShell</b><span data-i18n="cap.ps">Windows administration</span></p>
+    </div>
+  </div>
+
+  <p class="prose" data-reveal style="margin-top:var(--s-6)" data-i18n="cap.foot">
+    Nothing on this list says &ldquo;expert&rdquo;. Every label names the evidence
+    behind it instead, because the fastest way to lose a technical reader is a
+    claim they can disprove in one click.
+  </p>
+</section>
+
+<!-- ==========================================================================
+     04  WORK
+     ========================================================================== -->
+<section class="section wrap" id="work">
+  <div class="sec-head">
+    <p class="sec-index">04</p>
+    <div class="sec-title">
+      <h2 data-i18n="work.h2">Shipped</h2>
+      <a class="arrow" href="https://github.com/ybreakless" rel="noopener" data-i18n="work.all">All repositories</a>
+    </div>
+  </div>
+
+  <div class="work" data-reveal>
+    <article class="proj">
+      <div class="proj-art">
+        <span class="art" data-art="alignment" style="aspect-ratio:720/260" role="img"
+              data-i18n-attr="aria-label:work.p1.alt"
+              aria-label="Two aligned sequences with their identity track"></span>
+      </div>
+      <div>
+        <p class="proj-kicker" data-i18n="work.p1.kicker">Live &#183; open source</p>
+        <div class="proj-head">
+          <h3 data-i18n="work.p1.h">This site</h3>
+          <span class="chip chip-solid" data-i18n="work.shipped">Shipped</span>
+        </div>
+        <dl>
+          <dt data-i18n="work.problem">Problem</dt>
+          <dd data-i18n="work.p1.problem">Four university applications, a scholarship, and every recruiter who searches the name all need the same facts in a different shape &#8212; kept in sync by hand.</dd>
+          <dt data-i18n="work.approach">Approach</dt>
+          <dd data-i18n="work.p1.approach">One static site, no framework and no build step. A token-based design system, a hand-written interpreter for the console below, eight locales with right-to-left support, and a print stylesheet that renders the CV straight to A4.</dd>
+          <dt data-i18n="work.result">Result</dt>
+          <dd data-i18n="work.p1.result">Down from <strong>8.4&nbsp;MB to about 70&nbsp;KB gzipped</strong>, zero dependencies, WCAG&nbsp;AA contrast in both themes, and every drawing generated by a script in the repository rather than a model.</dd>
+        </dl>
+        <div class="proj-foot">
+          <div class="chips">
+            <span class="chip">HTML</span><span class="chip">CSS</span>
+            <span class="chip">Vanilla JS</span><span class="chip">GitHub Pages</span>
+          </div>
+          <a class="arrow" href="https://github.com/ybreakless/ybreakless.github.io" rel="noopener" data-i18n="work.source">Source</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="proj">
+      <div class="proj-art">
+        <span class="art" data-art="trace" style="aspect-ratio:720/240" role="img"
+              data-i18n-attr="aria-label:work.p2.alt"
+              aria-label="A periodic signal trace with one analysis window marked"></span>
+      </div>
+      <div>
+        <p class="proj-kicker" data-i18n="work.p2.kicker">Python &#183; CLI</p>
+        <div class="proj-head">
+          <h3 data-i18n="work.p2.h">Terminal network toolkit</h3>
+          <span class="chip" data-i18n="work.local">Local</span>
+        </div>
+        <dl>
+          <dt data-i18n="work.problem">Problem</dt>
+          <dd data-i18n="work.p2.problem">Diagnosing a network meant running four utilities and correlating their output by eye.</dd>
+          <dt data-i18n="work.approach">Approach</dt>
+          <dd data-i18n="work.p2.approach">A single Python command-line tool that runs host discovery, port scanning and latency probes concurrently on <code class="mono">asyncio</code>, then prints one report. Standard library only.</dd>
+          <dt data-i18n="work.result">Result</dt>
+          <dd data-i18n="work.p2.result">Concurrency turns a serial subnet sweep into a parallel one. <strong>The speedup is not quoted here because it has not been measured under controlled conditions</strong> &#8212; the number goes up when the benchmark does, and not before.</dd>
+        </dl>
+        <div class="proj-foot">
+          <div class="chips">
+            <span class="chip">Python</span><span class="chip">asyncio</span><span class="chip">sockets</span>
+          </div>
+          <span class="chip" data-i18n="work.pending">Publication pending</span>
+        </div>
+      </div>
+    </article>
+  </div>
+
+  <div class="sec-head" style="margin-top:var(--s-8)">
+    <p class="sec-index">04b</p>
+    <div class="sec-title">
+      <h2 data-i18n="work.h2b">Open questions</h2>
+      <p class="sec-note" data-i18n="work.noteb">Not built. Deliberately.</p>
+    </div>
+  </div>
+
+  <p class="lead" data-reveal style="margin-bottom:var(--s-5)" data-i18n="work.leadb">
+    These are the problems the degree is for. Listing them as products would be
+    a lie; listing them as questions is the honest version and, for an academic
+    reader, the more interesting one.
+  </p>
+
+  <div class="grid cols-3" data-reveal>
+    <div class="idea">
+      <div class="idea-head"><h3 data-i18n="work.i1.h">Palm-contact biosignals</h3><span class="chip" data-i18n="work.concept">Concept</span></div>
+      <p data-i18n="work.i1.p">How much is genuinely recoverable from photoplethysmography at a single hand contact before the noise floor wins? That is a signal-processing question, and I do not yet have the mathematics for it.</p>
+    </div>
+    <div class="idea">
+      <div class="idea-head"><h3 data-i18n="work.i2.h">Alignment at small scale</h3><span class="chip" data-i18n="work.concept">Concept</span></div>
+      <p data-i18n="work.i2.p">Needleman&#8211;Wunsch is quadratic and every practical tool cheats around it. I want to implement the exact algorithm first, badly and slowly, before I am allowed to use the fast one.</p>
+    </div>
+    <div class="idea">
+      <div class="idea-head"><h3 data-i18n="work.i3.h">Moython</h3><span class="chip" data-i18n="work.progress">In progress</span></div>
+      <p data-i18n="work.i3.p">Python and computer-science material for learners whose own language has almost none. I learned from free resources; this is the part I can pay back before I am qualified to do anything else.</p>
     </div>
   </div>
 </section>
 
 <!-- ==========================================================================
-     6. CONTACT
+     05  CONSOLE
+     A real command interpreter over the same data the page renders. It is
+     the fastest way through the site for the kind of reader this site is
+     written for, and it is also the largest piece of code here.
      ========================================================================== -->
-<section class="section container" id="contact">
-  <div class="section-head">
-    <div>
-      <p class="eyebrow">Contact</p>
-      <h2>Get in touch</h2>
+<section class="section wrap" id="console">
+  <div class="sec-head">
+    <p class="sec-index">05</p>
+    <div class="sec-title">
+      <h2 data-i18n="term.h2">Console</h2>
+      <p class="sec-note" data-i18n="term.note">Tab completes &#183; &#8593;&#8595; recalls</p>
+    </div>
+  </div>
+
+  <p class="lead" data-reveal style="margin-bottom:var(--s-5)" data-i18n="term.lead">
+    Everything on this page is also reachable by typing. The interpreter is
+    about two hundred lines of JavaScript with no dependencies, and it can
+    reconfigure the site &#8212; try <code class="mono">theme light</code>,
+    <code class="mono">lang de</code> or <code class="mono">help</code>.
+  </p>
+
+  <div class="term" data-reveal>
+    <div class="term-bar">
+      <span class="term-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+      <span class="term-title">ybreakless@portfolio</span>
+      <span class="term-hint" data-i18n="term.hint">type help</span>
+    </div>
+    <div class="term-body" id="term-body" role="log" aria-live="polite" aria-atomic="false"
+         data-i18n-attr="aria-label:term.output" aria-label="Console output" tabindex="0"></div>
+    <form class="term-form" id="term-form" autocomplete="off">
+      <label class="sr-only" for="term-in" data-i18n="term.inlabel">Console command</label>
+      <span class="term-ps" aria-hidden="true">$</span>
+      <span class="term-ghost">
+        <span class="term-shadow" id="term-shadow" aria-hidden="true"></span>
+        <input class="term-in" id="term-in" type="text" spellcheck="false"
+               autocapitalize="off" autocorrect="off"
+               data-i18n-attr="placeholder:term.placeholder" placeholder="help">
+      </span>
+    </form>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     06  CONTACT
+     ========================================================================== -->
+<section class="section wrap" id="contact">
+  <div class="sec-head">
+    <p class="sec-index">06</p>
+    <div class="sec-title">
+      <h2 data-i18n="contact.h2">Get in touch</h2>
+      <p class="sec-note" data-i18n="contact.note">Reply within 24 hours</p>
     </div>
   </div>
 
   <div class="contact-grid">
     <div data-reveal>
-      <p class="lead" style="margin-bottom:1.5rem">
-        I reply to everything within 24 hours. If you&rsquo;re an admissions officer, a
-        professor, or someone with a project I could help on — write to me.
+      <p class="lead" data-i18n="contact.lead">
+        Scholarship committees, professors with research-assistant work, and
+        anyone building something at the boundary of code and biology &#8212;
+        this is the fastest way to reach me.
       </p>
 
-      <div class="contact-direct">
-        <a class="contact-link" href="mailto:ybreakless@gmail.com">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
-          Email <span class="cl-handle">ybreakless@gmail.com</span>
+      <div class="chan">
+        <a id="mail-link" href="#" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
+               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="2.5" y="4.5" width="19" height="15" rx="2"/><path d="m21 7-9 5.5L3 7"/></svg>
+          <b data-i18n="contact.email">Email</b><span id="mail-text">&#8212;</span>
         </a>
-        <a class="contact-link" href="https://www.linkedin.com/in/mohajnajafi/" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05a3.74 3.74 0 0 1 3.37-1.85c3.6 0 4.27 2.37 4.27 5.46zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.55V9h3.57zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>
-          LinkedIn <span class="cl-handle">/in/mohajnajafi</span>
-        </a>
-        <a class="contact-link" href="https://github.com/ybreakless" rel="noopener">
+        <a href="https://github.com/ybreakless" rel="noopener">
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.6 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .3z"/></svg>
-          GitHub <span class="cl-handle">@ybreakless</span>
+          <b>GitHub</b><span>@ybreakless</span>
         </a>
-        <a class="contact-link" href="https://leetcode.com/ybreakless" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 18 6-6-6-6M8 6l-6 6 6 6"/></svg>
-          LeetCode <span class="cl-handle">@ybreakless</span>
+        <a href="https://www.linkedin.com/in/mohajnajafi/" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05a3.74 3.74 0 0 1 3.37-1.85c3.6 0 4.27 2.37 4.27 5.46zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.55V9h3.57zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>
+          <b>LinkedIn</b><span>/in/mohajnajafi</span>
         </a>
-        <a class="contact-link" href="https://huggingface.co/ybreakless" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01"/></svg>
-          Hugging Face <span class="cl-handle">@ybreakless</span>
+        <a href="https://leetcode.com/ybreakless" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 18 6-6-6-6M8 6l-6 6 6 6"/></svg>
+          <b>LeetCode</b><span>@ybreakless</span>
+        </a>
+        <a href="https://huggingface.co/ybreakless" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 14s1.5 2 4 2 4-2 4-2M9 9.5h.01M15 9.5h.01"/></svg>
+          <b>Hugging&nbsp;Face</b><span>@ybreakless</span>
         </a>
       </div>
     </div>
 
-    <form id="contact-form" data-reveal
+    <form id="contact-form" data-reveal style="--delay:80ms"
           action="https://formsubmit.co/ybreakless@gmail.com" method="POST">
-      <input type="hidden" name="_subject" value="New message from your portfolio">
+      <input type="hidden" name="_subject" value="Message from ybreakless.github.io">
       <input type="hidden" name="_template" value="table">
       <input type="hidden" name="_captcha" value="true">
-      <!-- Honeypot: bots fill this, humans never see it -->
-      <input type="text" name="_honey" class="visually-hidden" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <input type="text" name="_honey" class="sr-only" tabindex="-1" autocomplete="off" aria-hidden="true">
 
       <div class="field">
-        <label for="cf-name">Name</label>
-        <input id="cf-name" type="text" name="name" required autocomplete="name"
-               placeholder="Your name or institution">
+        <label for="cf-name" data-i18n="contact.name">Name or institution</label>
+        <input id="cf-name" name="name" type="text" required autocomplete="organization">
       </div>
       <div class="field">
-        <label for="cf-email">Email</label>
-        <input id="cf-email" type="email" name="email" required autocomplete="email"
-               placeholder="you@example.com">
+        <label for="cf-email" data-i18n="contact.mail">Email</label>
+        <input id="cf-email" name="email" type="email" required autocomplete="email">
       </div>
       <div class="field">
-        <label for="cf-message">Message</label>
-        <textarea id="cf-message" name="message" rows="5" required
-                  placeholder="What would you like to talk about?"></textarea>
+        <label for="cf-msg" data-i18n="contact.msg">Message</label>
+        <textarea id="cf-msg" name="message" rows="5" required></textarea>
       </div>
-      <button class="btn" type="submit" style="width:100%">Send message</button>
-      <p class="subtle" style="font-size:var(--step--2);margin-top:0.75rem;text-align:center">
-        Goes straight to my inbox. No newsletter, no forwarding.
-      </p>
+      <button class="btn" type="submit" style="width:100%;justify-content:center"
+              data-i18n="contact.send">Send</button>
+      <p class="subtle" style="font-size:var(--t--2);margin-top:var(--s-3);text-align:center"
+         data-i18n="contact.privacy">Goes to one inbox. No list, no forwarding, no tracking on this page.</p>
     </form>
   </div>
 </section>
 </main>
 
-<!-- ==========================================================================
-     FOOTER
-     ========================================================================== -->
 <footer class="footer">
-  <div class="container footer-inner">
-    <p>&copy; <span id="year">2026</span> Mohammad Haj Najafi</p>
+  <div class="wrap footer-in">
+    <p>&copy; <span id="year">2026</span> &#183; <span data-i18n="foot.built">hand-written, no dependencies</span></p>
     <nav class="footer-links" aria-label="Footer">
-      <a href="resume.html">CV</a>
-      <a href="https://github.com/ybreakless" rel="noopener">GitHub</a>
-      <a href="https://www.linkedin.com/in/mohajnajafi/" rel="noopener">LinkedIn</a>
-      <a href="mailto:ybreakless@gmail.com">Email</a>
+      <a href="resume.html" data-i18n="nav.cv">CV</a>
+      <a href="https://github.com/ybreakless/ybreakless.github.io" rel="noopener" data-i18n="foot.source">Source</a>
+      <a href="#top" data-i18n="foot.top">Top</a>
     </nav>
   </div>
 </footer>
 
+<!-- ==========================================================================
+     CONFIGURATION
+     ========================================================================== -->
+<div class="drawer-scrim" id="drawer-scrim" hidden></div>
+<aside class="drawer" id="drawer" role="dialog" aria-modal="true"
+       data-i18n-attr="aria-label:cfg.title" aria-label="Site configuration" hidden>
+  <div class="drawer-head">
+    <p class="tag" data-i18n="cfg.title">Site configuration</p>
+    <button class="ibtn" id="drawer-close" type="button"
+            data-i18n-attr="aria-label:cfg.close" aria-label="Close">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+           stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </div>
+
+  <div class="cfg">
+    <span class="cfg-label" data-i18n="cfg.theme">Theme</span>
+    <div class="seg" id="seg-theme" role="group" data-i18n-attr="aria-label:cfg.theme">
+      <button type="button" data-v="dark" data-i18n="cfg.dark">Dark</button>
+      <button type="button" data-v="light" data-i18n="cfg.light">Light</button>
+      <button type="button" data-v="auto" data-i18n="cfg.auto">System</button>
+    </div>
+  </div>
+
+  <div class="cfg">
+    <span class="cfg-label" data-i18n="cfg.motion">Motion</span>
+    <div class="seg" id="seg-motion" role="group" data-i18n-attr="aria-label:cfg.motion">
+      <button type="button" data-v="on" data-i18n="cfg.full">Full</button>
+      <button type="button" data-v="off" data-i18n="cfg.reduced">Reduced</button>
+    </div>
+    <p class="cfg-hint" data-i18n="cfg.motionhint">Your system setting already wins by default; this overrides it either way.</p>
+  </div>
+
+  <div class="cfg">
+    <span class="cfg-label" data-i18n="cfg.grid">Background grid</span>
+    <div class="seg" id="seg-grid" role="group" data-i18n-attr="aria-label:cfg.grid">
+      <button type="button" data-v="on" data-i18n="cfg.on">On</button>
+      <button type="button" data-v="off" data-i18n="cfg.off">Off</button>
+    </div>
+  </div>
+
+  <div class="cfg">
+    <span class="cfg-label" data-i18n="cfg.language">Language</span>
+    <div class="lang-grid" id="lang-grid" role="group" data-i18n-attr="aria-label:cfg.language"></div>
+    <p class="cfg-hint" data-i18n="cfg.langhint">Arabic and Persian switch the whole page to right-to-left and load a script-appropriate typeface.</p>
+  </div>
+
+  <div class="cfg">
+    <span class="cfg-label" data-i18n="cfg.reset">Reset</span>
+    <button class="btn btn-ghost" id="cfg-reset" type="button" style="width:100%;justify-content:center"
+            data-i18n="cfg.resetbtn">Clear saved settings</button>
+    <p class="cfg-hint" data-i18n="cfg.resethint">Settings live in this browser only. Nothing is sent anywhere.</p>
+  </div>
+</aside>
+
+<script src="js/i18n.js" defer></script>
+<script src="js/motion.js" defer></script>
+<script src="js/terminal.js" defer></script>
 <script src="js/main.js" defer></script>
 </body>
 </html>

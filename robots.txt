@@ -1,5 +1,6 @@
 User-agent: *
 Allow: /
 Disallow: /assets/images/orig/
+Allow: /assets/art/
 
 Sitemap: https://ybreakless.github.io/sitemap.xml
