@@ -4,9 +4,10 @@ Personal site and CV. Monochrome, eight locales, an interactive console, and no 
 
 **Live:** https://ybreakless.github.io
 
-The short version of what it says: an Experimental Sciences graduate applying for **Informatik**
-at German technical universities, with **computational biology in Switzerland** as the actual
-destination. The science background is the reason for the computer science, not a detour from it.
+The short version of what it says: a developer working across **cybersecurity**,
+**systems programming** and **machine learning** — Python as the field tool,
+Rust as the craft, and a standing project of moving ML work toward Rust.
+Computational biology stays on the desk as a permanent side interest.
 
 ---
 
@@ -25,7 +26,7 @@ Everything below was written for this site rather than installed.
 
 ```
 .
-├── index.html            Hero · trajectory · record · capability · work · console · contact
+├── index.html            Hero · focus · record · capability · work · console · contact
 ├── resume.html           Print-first CV (A4, renders straight to PDF)
 ├── 404.html
 ├── css/style.css         Design system: tokens, components, motion, locale, print
@@ -96,10 +97,7 @@ GitHub Pages, `main` branch, `/` root.
 
 See [`AUDIT.md`](AUDIT.md). Open items, highest value first:
 
-- [ ] **Confirm the admission pathway** on [anabin](https://anabin.kmk.org/) and
-      [uni-assist](https://www.uni-assist.de/) — worth more than any change to this site
-- [ ] Add public verification URLs to all seven certifications
+- [ ] Add public verification URLs to all six certifications
 - [ ] Benchmark the network toolkit and push it with a README; the speedup figure is
       deliberately absent until it is measured
-- [ ] Confirm the IELTS band and state it on both pages
-- [ ] Replace the estimated `≈1.0` German grade with the official conversion once issued
+- [ ] Link the `focus` section's claims to concrete artefacts (repos, scripts) as they land

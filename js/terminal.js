@@ -3,10 +3,10 @@
 
    A small command interpreter over the same facts the page renders, plus
    the four settings the drawer exposes. It exists because the readers this
-   site is aimed at — professors, scholarship reviewers, the person who
-   ends up interviewing me — are faster with a keyboard than with a scroll
-   wheel, and because writing a tokeniser is a more honest demonstration of
-   what I can do than a paragraph claiming I can.
+   site is aimed at — recruiters, collaborators, the person who ends up
+   interviewing me — are faster with a keyboard than with a scroll wheel,
+   and because writing a tokeniser is a more honest demonstration of what I
+   can do than a paragraph claiming I can.
 
    Behaviour it borrows from a real shell, in rough order of how much
    people miss it when it is absent:
@@ -71,23 +71,28 @@
   /* --- the data the commands read -------------------------------------- */
 
   var FACTS = {
+    focus: [
+      ['security', 'own network tooling - host discovery, port scans, latency'],
+      ['rust', 'primary craft - pushing ML work toward Rust'],
+      ['ml', 'pandas, NumPy, Matplotlib, statistics'],
+      ['bio', 'computational biology on the desk - Biopython, sequence reading']
+    ],
     record: [
-      ['diploma', 'Experimental Sciences, 20.0 / 20.0 (maximum)'],
-      ['german equiv.', '~1.0, pending anabin / uni-assist evaluation'],
-      ['certifications', '7 completed, 2024-2026'],
-      ['languages', 'FA native · EN C1-C2 (IELTS) · DE B2'],
-      ['testing', 'SAT completed']
+      ['certifications', '6 completed, 2024-2026'],
+      ['languages', 'TR C2 · AZ C2 · AR B1 · ZH HSK-2 · FR in progress · EN working'],
+      ['repos', '7 public, including this site']
     ],
     skills: [
-      ['python', 'primary, 3 years'],
+      ['rust', 'primary craft - ML tooling'],
+      ['python', 'field tool, 3 years'],
       ['bash', 'daily driver'],
       ['sql', 'joins, aggregation'],
       ['html/css/js', 'this site, hand-written'],
-      ['rust', 'learning - ownership, traits'],
       ['pandas/numpy', 'cleaning, aggregation'],
       ['linux', 'primary environment'],
       ['git', 'branches, PR workflow'],
-      ['tcp/ip', 'certified fundamentals']
+      ['tcp/ip', 'certified fundamentals'],
+      ['infosec', 'certified essentials']
     ],
     certs: [
       'Google Data Analytics Professional  - Google/Coursera, 2026',
@@ -95,18 +100,10 @@
       'Python Programming, full track      - Maktabkhooneh, 2024',
       'Computer Networking Fundamentals    - Maktabkhooneh, 2025',
       'Information Security Essentials     - Maktabkhooneh, 2025',
-      'Git & GitHub Fundamentals           - 365 Data Science, 2024',
-      'SAT                                 - College Board, 2025'
-    ],
-    path: [
-      ['01  complete', 'Experimental Sciences diploma, 20.0/20.0'],
-      ['02  current', 'BSc Informatik - Germany, WS 2027'],
-      ['03  planned', 'MSc computational biology - Switzerland'],
-      ['04  direction', 'biotech, compute side - Basel/Zurich corridor']
+      'Git & GitHub Fundamentals           - 365 Data Science, 2024'
     ],
     repos: [
       ['ybreakless.github.io', 'this site - HTML, CSS, vanilla JS'],
-      ['GermanRoadMap', 'preparation material for the German exam'],
       ['Image2dot', 'Python - image to dot-matrix conversion'],
       ['Awesome-AI-ImageStyles', 'a collected reference list']
     ]
@@ -140,9 +137,9 @@
     about: 'the one-paragraph version',
     run: function () {
       head('whoami');
-      print('Science graduate turned systems programmer, applying for Informatik');
-      print('at German technical universities for Winter Semester 2027, with');
-      print('computational biology in Switzerland as the actual destination.');
+      print('Developer working across cybersecurity, systems programming and');
+      print('machine learning. Python is the field tool, Rust the craft, Linux');
+      print('the home ground; computational biology stays on the desk.');
       blank();
       print('The site deliberately carries the record and not the biography.', 'is-dim');
       print('Everything claimed here is checkable; that is the whole design.', 'is-dim');
@@ -150,7 +147,7 @@
   };
 
   CMD.record = {
-    about: 'grades, languages, certifications',
+    about: 'languages, certifications, repositories',
     run: function () {
       head('record');
       FACTS.record.forEach(function (r) { row(r[0], r[1]); });
@@ -158,7 +155,7 @@
   };
 
   CMD.certs = {
-    about: 'the seven certifications in full',
+    about: 'the six certifications in full',
     run: function () {
       head('certifications');
       FACTS.certs.forEach(function (c) { print(esc(c)); });
@@ -176,13 +173,13 @@
     }
   };
 
-  CMD.path = {
-    about: 'the four-stage plan, DE then CH',
+  CMD.focus = {
+    about: 'the four disciplines, in one look',
     run: function () {
-      head('trajectory');
-      FACTS.path.forEach(function (p) { row(p[0], p[1]); });
+      head('focus');
+      FACTS.focus.forEach(function (f) { row(f[0], f[1]); });
       blank();
-      print('Informatik is the instrument, not the destination.', 'is-dim');
+      print('One toolset: Python, Rust, Linux.', 'is-dim');
     }
   };
 
@@ -205,7 +202,8 @@
         link(a.getAttribute('href').replace('mailto:', ''), a.getAttribute('href'));
       }
       link('github.com/ybreakless', 'https://github.com/ybreakless');
-      link('linkedin.com/in/mohajnajafi', 'https://www.linkedin.com/in/mohajnajafi/');
+      link('leetcode.com/ybreakless', 'https://leetcode.com/ybreakless');
+      link('huggingface.co/ybreakless', 'https://huggingface.co/ybreakless');
       blank();
       print('Or the form in section 06. Replies within 24 hours.', 'is-dim');
     }
@@ -226,7 +224,7 @@
       var target = id && doc.getElementById(id);
       if (!target) {
         print('no section "' + esc(id) + '"', 'is-err');
-        print('try: trajectory, record, capability, work, console, contact', 'is-dim');
+        print('try: focus, record, capability, work, console, contact', 'is-dim');
         return;
       }
       target.scrollIntoView({ behavior: Motion.still() ? 'auto' : 'smooth' });
@@ -463,7 +461,7 @@
   function banner() {
     body.innerHTML = '';
     print('ybreakless.github.io — interactive console', 'is-head');
-    print('Informatik (DE) &rarr; computational biology (CH)', 'is-dim');
+    print('Security &#183; Rust &#183; machine learning', 'is-dim');
     blank();
     print('Type <b>help</b> for commands, or <b>whoami</b> to start.');
     print('The console can also reconfigure the page: <b>theme light</b>, <b>lang de</b>.', 'is-dim');

@@ -257,17 +257,17 @@ function ogCard() {
   <rect x="84" y="92" width="46" height="46" fill="#ffffff"/>
   <text x="94" y="125" font-size="26" font-weight="700" fill="#08090a">Y</text>
   <text x="148" y="124" font-size="19" fill="#ffffff" opacity="0.62" letter-spacing="3">YBREAKLESS.GITHUB.IO</text>
-  <text x="84" y="272" font-size="20" fill="#ffffff" opacity="0.55" letter-spacing="4">INFORMATIK &#183; DE &#8594; BIOINFORMATIK &#183; CH</text>
+  <text x="84" y="272" font-size="20" fill="#ffffff" opacity="0.55" letter-spacing="4">SECURITY &#183; RUST &#183; MACHINE LEARNING</text>
 </g>
 <g font-family="Inter,'Helvetica Neue',Arial,sans-serif" fill="#ffffff">
-  <text x="84" y="380" font-size="82" font-weight="700" letter-spacing="-3.5">Computation, pointed</text>
-  <text x="84" y="466" font-size="82" font-weight="700" letter-spacing="-3.5">at living systems.</text>
+  <text x="84" y="380" font-size="82" font-weight="700" letter-spacing="-3.5">Attacking assumptions,</text>
+  <text x="84" y="466" font-size="82" font-weight="700" letter-spacing="-3.5">defending systems.</text>
 </g>
 <g font-family="'JetBrains Mono',ui-monospace,monospace" fill="#ffffff" opacity="0.62" font-size="21">
-  <text x="84" y="546">20.0 / 20.0 DIPLOMA</text>
-  <text x="470" y="546">DE B2</text>
-  <text x="640" y="546">7 CERTIFICATIONS</text>
-  <text x="990" y="546">8 LOCALES</text>
+  <text x="84" y="546">7 REPOSITORIES</text>
+  <text x="470" y="546">6 CERTIFICATIONS</text>
+  <text x="810" y="546">6 LANGUAGES</text>
+  <text x="1050" y="546">8 LOCALES</text>
 </g>
 </svg>
 `;
