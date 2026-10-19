@@ -6,12 +6,11 @@
      3  navigation          sticky border, mobile menu, scroll spy
      4  reveals             scroll-triggered entrance, headline, counters
      5  drawer              the configuration panel
-     6  odds and ends       year, address assembly, form pending state
+     6  odds and ends       year
 
    All of it is progressive enhancement. With JavaScript off the page
-   still reads, navigates, translates to whatever the markup says, and
-   submits the contact form; what disappears is the console, the settings
-   panel and the motion.
+   still reads, navigates and translates to whatever the markup says;
+   what disappears is the console, the settings panel and the motion.
    ========================================================================== */
 
 (function () {
@@ -403,25 +402,6 @@
 
   var year = doc.getElementById('year');
   if (year) year.textContent = String(new Date().getFullYear());
-
-  /* The address is assembled here instead of sitting in the markup. It is
-     not a security measure — anyone reading this file has it — but it does
-     keep the page out of the cheapest scrapers, and the contact form works
-     with JavaScript off, so nothing is lost. */
-  var mail = doc.getElementById('mail-link');
-  if (mail) {
-    var address = ['ybreakless', 'gmail.com'].join('@');
-    mail.href = 'mailto:' + address;
-    doc.getElementById('mail-text').textContent = address;
-  }
-
-  var form = doc.getElementById('contact-form');
-  if (form) {
-    form.addEventListener('submit', function () {
-      var btn = form.querySelector('button[type="submit"]');
-      if (btn) { btn.disabled = true; btn.textContent = '…'; }
-    });
-  }
 
   /* ======================================================================
      GO

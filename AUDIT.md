@@ -17,14 +17,14 @@ The portfolio speaks as a handle, not a personal dossier. Everything on the page
 ## 1. Structure as rebuilt
 
 ```
-1. Hero          Positioning statement + 3 CTAs (console, CV, repositories)
+1. Hero          Positioning statement + 3 CTAs (console, contact, repositories)
 2. Proof bar     Four numbers: repositories · certifications · spoken languages · locales
 3. Focus         Four disciplines in cards: security, Rust, ML, bio
 4. Record        Certifications · languages · public repositories
 5. Capability    Code · machine learning & data · security & systems
 6. Work          Shipped projects as Problem → Approach → Result
 7. Console       Command interpreter over the same facts the page renders
-8. Contact       Form + direct channels (email, GitHub, LeetCode, Hugging Face)
+8. Contact       Social channels under the @ybreakless handle (GitHub, LeetCode, Hugging Face)
 ```
 
 ## 2. Design
@@ -41,7 +41,7 @@ Unchanged from the previous rebuild and worth keeping:
 
 ## 3. Known gaps, in priority order
 
-1. **Certification verification links.** All six certificates are named with provider and year but no public URLs yet. Until linked, the page correctly labels them as claims.
+1. **Certification verification links.** All ten certificates are named with year but no public URLs yet. Until linked, the page correctly labels them as claims. Issuing platforms are deliberately not named, to keep the identity surface small.
 2. **Network toolkit benchmark.** The speedup figure is deliberately absent until measured under controlled conditions. Benchmark it, then quote it here and in the project card.
 3. **Artefacts behind the ML-in-Rust claim.** The "pulling ML toward Rust" position is the site's sharpest differentiator; it gets stronger every time a small public artefact backs it (a crate, a benchmark, a write-up).
 4. **Console parity.** The console's `focus` and `record` commands read a local `FACTS` table; keep it in step with the page when content changes.
@@ -50,4 +50,4 @@ Unchanged from the previous rebuild and worth keeping:
 
 - Add experience as it exists, never as a plan. A "shipped" section grows; nothing else should.
 - New certifications join the record only with a verification URL.
-- Keep the identity surface to the handle. Professional channels (GitHub, LeetCode, Hugging Face) are the verified graph; anything revealing personal life stays off the page.
+- Keep the identity surface to the handle. Professional channels (GitHub, LeetCode, Hugging Face) are the verified graph; anything revealing personal life stays off the page. A given name ("Ario") is shared only on direct request.

@@ -1,6 +1,6 @@
 # ybreakless.github.io
 
-Personal site and CV. Monochrome, eight locales, an interactive console, and no dependencies.
+Personal site. Monochrome, eight locales, an interactive console, and no dependencies.
 
 **Live:** https://ybreakless.github.io
 
@@ -27,7 +27,6 @@ Everything below was written for this site rather than installed.
 ```
 .
 ├── index.html            Hero · focus · record · capability · work · console · contact
-├── resume.html           Print-first CV (A4, renders straight to PDF)
 ├── 404.html
 ├── css/style.css         Design system: tokens, components, motion, locale, print
 ├── js/
@@ -97,7 +96,7 @@ GitHub Pages, `main` branch, `/` root.
 
 See [`AUDIT.md`](AUDIT.md). Open items, highest value first:
 
-- [ ] Add public verification URLs to all six certifications
+- [ ] Add public verification URLs to all ten certifications
 - [ ] Benchmark the network toolkit and push it with a README; the speedup figure is
       deliberately absent until it is measured
 - [ ] Link the `focus` section's claims to concrete artefacts (repos, scripts) as they land

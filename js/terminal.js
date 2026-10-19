@@ -78,8 +78,8 @@
       ['bio', 'computational biology on the desk - Biopython, sequence reading']
     ],
     record: [
-      ['certifications', '6 completed, 2024-2026'],
-      ['languages', 'TR C2 · AZ C2 · AR B1 · ZH HSK-2 · FR in progress · EN working'],
+      ['certifications', '10 completed, 2024-2026'],
+      ['languages', 'FA C2 · EN C2 · AZ C2 · DE C1 · TR B2 · AR B1 · ZH HSK-2 · FR A1 · ES A1'],
       ['repos', '7 public, including this site']
     ],
     skills: [
@@ -95,12 +95,16 @@
       ['infosec', 'certified essentials']
     ],
     certs: [
-      'Google Data Analytics Professional  - Google/Coursera, 2026',
-      'Comprehensive Git & GitHub          - Maktabkhooneh, 2026',
-      'Python Programming, full track      - Maktabkhooneh, 2024',
-      'Computer Networking Fundamentals    - Maktabkhooneh, 2025',
-      'Information Security Essentials     - Maktabkhooneh, 2025',
-      'Git & GitHub Fundamentals           - 365 Data Science, 2024'
+      'Google Data Analytics Professional  - 2026',
+      'Comprehensive Git & GitHub          - 2026',
+      'Python Programming, full track      - 2024',
+      'Computer Networking Fundamentals    - 2025',
+      'Information Security Essentials     - 2025',
+      'Git & GitHub Fundamentals           - 2024',
+      'JavaScript                          - Mimo, 2026',
+      'Python                              - Mimo, 2026',
+      'Frontend development                - Mimo, 2026',
+      'Backend development                 - Mimo, 2026'
     ],
     repos: [
       ['ybreakless.github.io', 'this site - HTML, CSS, vanilla JS'],
@@ -155,7 +159,7 @@
   };
 
   CMD.certs = {
-    about: 'the six certifications in full',
+    about: 'the ten certifications in full',
     run: function () {
       head('certifications');
       FACTS.certs.forEach(function (c) { print(esc(c)); });
@@ -197,23 +201,12 @@
     about: 'how to reach me',
     run: function () {
       head('contact');
-      var a = doc.getElementById('mail-link');
-      if (a && a.getAttribute('href') && a.getAttribute('href') !== '#') {
-        link(a.getAttribute('href').replace('mailto:', ''), a.getAttribute('href'));
-      }
+      print('Same handle everywhere: @ybreakless. Prefer to go by Ario on', 'is-dim');
+      print('a first-name basis.', 'is-dim');
+      blank();
       link('github.com/ybreakless', 'https://github.com/ybreakless');
       link('leetcode.com/ybreakless', 'https://leetcode.com/ybreakless');
       link('huggingface.co/ybreakless', 'https://huggingface.co/ybreakless');
-      blank();
-      print('Or the form in section 06. Replies within 24 hours.', 'is-dim');
-    }
-  };
-
-  CMD.cv = {
-    about: 'open the full CV',
-    run: function () {
-      print('opening resume.html');
-      setTimeout(function () { global.location.href = 'resume.html'; }, 350);
     }
   };
 
